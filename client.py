@@ -121,49 +121,50 @@ class FlowerClient(fl.client.NumPyClient):
 
     def __init__(self, cid):
 
-    self.cid = cid
+        self.cid = cid
 
-    trainset, testset = load_data()
+        trainset, testset = load_data()
 
-    # =========================
-    # Non-IID Data Partition
-    # =========================
+        # =========================
+        # Non-IID Data Partition
+        # =========================
 
-    client_labels = {
-        0: [0, 1],
-        1: [2, 3],
-        2: [4, 5],
-        3: [6, 7],
-        4: [8, 9]
-    }
+        client_labels = {
+            0: [0, 1],
+            1: [2, 3],
+            2: [4, 5],
+            3: [6, 7],
+            4: [8, 9]
+        }
 
-    my_labels = client_labels[int(cid)]
+        my_labels = client_labels[int(cid)]
 
-    indices = [
-        i
-        for i, label in enumerate(trainset.targets)
-        if int(label) in my_labels
-    ]
+        indices = [
+            i
+            for i, label in enumerate(trainset.targets)
+            if int(label) in my_labels
+        ]
 
-    self.trainset = torch.utils.data.Subset(
-        trainset,
-        indices
-    )
+        self.trainset = torch.utils.data.Subset(
+            trainset,
+            indices
+        )
 
-    self.testset = testset
+        self.testset = testset
 
-    self.trainloader = DataLoader(
-        self.trainset,
-        batch_size=32,
-        shuffle=True
-    )
+        self.trainloader = DataLoader(
+            self.trainset,
+            batch_size=32,
+            shuffle=True
+        )
 
-    self.testloader = DataLoader(
-        self.testset,
-        batch_size=128
-    )
+        self.testloader = DataLoader(
+            self.testset,
+            batch_size=128
+        )
 
-    self.model = Net()
+        self.model = Net()
+
 
     def get_parameters(self, config):
 
@@ -185,7 +186,10 @@ class FlowerClient(fl.client.NumPyClient):
             for key, value in params_dict
         }
 
-        self.model.load_state_dict(state_dict, strict=True)
+        self.model.load_state_dict(
+            state_dict,
+            strict=True
+        )
 
 
     def fit(self, parameters, config):
