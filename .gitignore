@@ -5,6 +5,8 @@ __pycache__/
 data/
 models/
 results/
+!results/baseline_iid.csv
+!results/noniid.csv
 
 *.pt
 *.pth
