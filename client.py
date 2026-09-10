@@ -9,6 +9,17 @@ from torchvision import datasets, transforms
 
 
 # =========================
+# Poisoning 設定
+# =========================
+
+# 哪一個 Client 是惡意 Client
+POISON_CLIENT = 0
+
+# Poisoning 強度
+POISON_SCALE = 2
+
+
+# =========================
 # 1. Model
 # =========================
 
@@ -58,6 +69,7 @@ def load_data():
 def train(model, trainloader):
 
     criterion = nn.CrossEntropyLoss()
+
     optimizer = optim.SGD(
         model.parameters(),
         lr=0.01
@@ -196,10 +208,50 @@ class FlowerClient(fl.client.NumPyClient):
 
         self.set_parameters(parameters)
 
+        # =========================
+        # 保存 Server 傳下來的 Global Model
+        # =========================
+
+        old_parameters = self.get_parameters(config={})
+
+        # =========================
+        # 本地訓練
+        # =========================
+
         train(self.model, self.trainloader)
 
+        # 本地訓練後的 Model
+        new_parameters = self.get_parameters(config={})
+
+
+        # =========================
+        # Model Poisoning
+        # =========================
+
+        if int(self.cid) == POISON_CLIENT:
+
+            print(
+                f"[!] Client {self.cid} is malicious "
+                f"(scale={POISON_SCALE})"
+            )
+
+            for i in range(len(new_parameters)):
+
+                # 計算 Local Update
+                update = (
+                    new_parameters[i]
+                    - old_parameters[i]
+                )
+
+                # 放大 Update
+                new_parameters[i] = (
+                    old_parameters[i]
+                    + POISON_SCALE * update
+                )
+
+
         return (
-            self.get_parameters(config={}),
+            new_parameters,
             len(self.trainset),
             {}
         )
@@ -237,3 +289,4 @@ if __name__ == "__main__":
         server_address="127.0.0.1:8080",
         client=client.to_client()
     )
+
