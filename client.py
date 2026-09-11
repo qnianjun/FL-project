@@ -16,7 +16,7 @@ from torchvision import datasets, transforms
 POISON_CLIENT = 0
 
 # Poisoning 強度
-POISON_SCALE = 2
+POISON_SCALE = 10
 
 
 # =========================
