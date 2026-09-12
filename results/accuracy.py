@@ -56,7 +56,9 @@ plt.plot(
 
 plt.xlabel("Round")
 plt.ylabel("Accuracy (%)")
-plt.title("Accuracy of every scale")
+plt.ylim(0, 100)
+plt.title("Accuracy by Poisoning Scale")
+
 plt.legend()
 plt.grid(True)
 
