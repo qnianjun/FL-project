@@ -28,21 +28,21 @@ plt.plot(
     clients_3["round"],
     clients_3["accuracy"] *100,
     marker="o",
-    label="5"
+    label="3"
 )
 
 plt.plot(
     clients_4["round"],
     clients_4["accuracy"] *100,
     marker="o",
-    label="10"
+    label="4"
 )
 
 plt.plot(
     clients_5["round"],
     clients_5["accuracy"] *100,
     marker="o",
-    label="20"
+    label="5"
 )
 
 
