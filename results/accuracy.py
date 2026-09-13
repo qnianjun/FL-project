@@ -53,7 +53,6 @@ plt.plot(
     label="50"
 )
 
-
 plt.xlabel("Round")
 plt.ylabel("Accuracy (%)")
 plt.ylim(0, 100)
