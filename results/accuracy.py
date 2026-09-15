@@ -18,7 +18,7 @@ plt.plot(
     mid["round"],
     mid["accuracy"] *100,
     marker="o",
-    label="mid"
+    label="middle"
 )
 
 plt.plot(
