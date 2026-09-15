@@ -130,11 +130,11 @@ class FlowerClient(fl.client.NumPyClient):
         # =========================
 
         client_labels = {
-            0: [0, 1],
-            1: [2, 3],
-            2: [4, 5],
-            3: [6, 7],
-            4: [8, 9]
+            0: [0, 1,2],
+            1: [2, 3,4],
+            2: [4, 5,6],
+            3: [6, 7,8],
+            4: [8, 9,0]
         }
 
         my_labels = client_labels[int(cid)]
