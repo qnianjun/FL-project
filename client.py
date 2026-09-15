@@ -1,15 +1,30 @@
 import sys
-
 import flwr as fl
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader
+import numpy as np
+
+from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, transforms
 
 
 # =========================
-# 1. Model
+# 設定
+# =========================
+
+NUM_CLIENTS = 5
+
+# alpha 越大 → 越接近 IID
+# alpha 越小 → Non-IID 越嚴重
+ALPHA = 10
+
+# 固定亂數，讓實驗可以重現
+SEED = 42
+
+
+# =========================
+# Model
 # =========================
 
 class Net(nn.Module):
@@ -28,10 +43,73 @@ class Net(nn.Module):
 
 
 # =========================
-# 2. Dataset
+# 建立 Dirichlet Partition
+# =========================
+
+def create_dirichlet_partition(dataset, num_clients, alpha):
+    """
+    使用 Dirichlet distribution
+    將 MNIST 分配給不同 Client。
+
+    每一筆資料只會屬於一個 Client。
+    """
+
+    np.random.seed(SEED)
+
+    targets = np.array(dataset.targets)
+
+    client_indices = [[] for _ in range(num_clients)]
+
+    # MNIST 有 10 個類別
+    num_classes = 10
+
+    for class_id in range(num_classes):
+
+        # 找出這個 class 的所有資料
+        class_indices = np.where(targets == class_id)[0]
+
+        # 打亂
+        np.random.shuffle(class_indices)
+
+        # Dirichlet 分配比例
+        proportions = np.random.dirichlet(
+            np.repeat(alpha, num_clients)
+        )
+
+        # 根據比例計算每個 Client 要拿多少資料
+        proportions = (
+            np.cumsum(proportions) * len(class_indices)
+        ).astype(int)
+
+        proportions = np.diff(
+            np.concatenate(([0], proportions))
+        )
+
+        start = 0
+
+        for client_id, count in enumerate(proportions):
+
+            end = start + count
+
+            client_indices[client_id].extend(
+                class_indices[start:end]
+            )
+
+            start = end
+
+    # 最後再打亂每個 Client 的資料
+    for client_id in range(num_clients):
+        np.random.shuffle(client_indices[client_id])
+
+    return client_indices
+
+
+# =========================
+# Load Data
 # =========================
 
 def load_data():
+
     transform = transforms.ToTensor()
 
     trainset = datasets.MNIST(
@@ -52,12 +130,13 @@ def load_data():
 
 
 # =========================
-# 3. Train
+# Train
 # =========================
 
 def train(model, trainloader):
 
     criterion = nn.CrossEntropyLoss()
+
     optimizer = optim.SGD(
         model.parameters(),
         lr=0.01
@@ -69,9 +148,9 @@ def train(model, trainloader):
 
         optimizer.zero_grad()
 
-        output = model(images)
+        outputs = model(images)
 
-        loss = criterion(output, labels)
+        loss = criterion(outputs, labels)
 
         loss.backward()
 
@@ -79,7 +158,7 @@ def train(model, trainloader):
 
 
 # =========================
-# 4. Test
+# Test
 # =========================
 
 def test(model, testloader):
@@ -88,69 +167,69 @@ def test(model, testloader):
 
     model.eval()
 
+    loss = 0
     correct = 0
     total = 0
-    loss_total = 0
 
     with torch.no_grad():
 
         for images, labels in testloader:
 
-            output = model(images)
+            outputs = model(images)
 
-            loss = criterion(output, labels)
+            batch_loss = criterion(
+                outputs,
+                labels
+            )
 
-            loss_total += loss.item()
+            loss += batch_loss.item() * len(labels)
 
-            _, predicted = torch.max(output, 1)
+            _, predicted = torch.max(
+                outputs,
+                1
+            )
 
-            total += labels.size(0)
+            total += len(labels)
 
-            correct += (predicted == labels).sum().item()
+            correct += (
+                predicted == labels
+            ).sum().item()
+
+    loss = loss / total
 
     accuracy = correct / total
 
-    return loss_total / len(testloader), accuracy
+    return loss, accuracy
 
 
 # =========================
-# 5. Flower Client
+# Flower Client
 # =========================
 
 class FlowerClient(fl.client.NumPyClient):
 
     def __init__(self, cid):
 
-        self.cid = cid
+        self.cid = int(cid)
+
+        self.model = Net()
 
         trainset, testset = load_data()
 
-        # =========================
-        # Non-IID Data Partition
-        # =========================
-
-        client_labels = {
-            0: [0, 1,2],
-            1: [2, 3,4],
-            2: [4, 5,6],
-            3: [6,7,8],
-            4: [8,9,0]
-        }
-
-        my_labels = client_labels[int(cid)]
-
-        indices = [
-            i
-            for i, label in enumerate(trainset.targets)
-            if int(label) in my_labels
-        ]
-
-        self.trainset = torch.utils.data.Subset(
+        # 建立 Dirichlet partition
+        partitions = create_dirichlet_partition(
             trainset,
-            indices
+            NUM_CLIENTS,
+            ALPHA
         )
 
-        self.testset = testset
+        # 取得這個 Client 的資料
+        client_indices = partitions[self.cid]
+
+        self.trainset = Subset(
+            trainset,
+            client_indices
+        )
 
         self.trainloader = DataLoader(
             self.trainset,
@@ -158,21 +237,35 @@ class FlowerClient(fl.client.NumPyClient):
             shuffle=True
         )
 
+        self.testset = testset
+
         self.testloader = DataLoader(
             self.testset,
-            batch_size=128
+            batch_size=32,
+            shuffle=False
         )
 
-        self.model = Net()
+        print(
+            f"Client {self.cid}: "
+            f"{len(self.trainset)} training samples"
+        )
 
+
+    # =====================
+    # Get Parameters
+    # =====================
 
     def get_parameters(self, config):
 
         return [
-            val.cpu().numpy()
-            for val in self.model.state_dict().values()
+            value.cpu().numpy()
+            for value in self.model.state_dict().values()
         ]
 
+
+    # =====================
+    # Set Parameters
+    # =====================
 
     def set_parameters(self, parameters):
 
@@ -192,11 +285,18 @@ class FlowerClient(fl.client.NumPyClient):
         )
 
 
+    # =====================
+    # Fit
+    # =====================
+
     def fit(self, parameters, config):
 
         self.set_parameters(parameters)
 
-        train(self.model, self.trainloader)
+        train(
+            self.model,
+            self.trainloader
+        )
 
         return (
             self.get_parameters(config={}),
@@ -204,6 +304,10 @@ class FlowerClient(fl.client.NumPyClient):
             {}
         )
 
+
+    # =====================
+    # Evaluate
+    # =====================
 
     def evaluate(self, parameters, config):
 
@@ -224,7 +328,7 @@ class FlowerClient(fl.client.NumPyClient):
 
 
 # =========================
-# 6. Start Client
+# Start Client
 # =========================
 
 if __name__ == "__main__":
