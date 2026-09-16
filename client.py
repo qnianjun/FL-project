@@ -17,7 +17,7 @@ NUM_CLIENTS = 5
 
 # alpha 越大 → 越接近 IID
 # alpha 越小 → Non-IID 越嚴重
-ALPHA = 10
+ALPHA =100
 
 # 固定亂數，讓實驗可以重現
 SEED = 42
