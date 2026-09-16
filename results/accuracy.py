@@ -3,58 +3,57 @@ import pandas as pd
 
 
 #read file
-clients_1=pd.read_csv("1_poisoning_clients.csv")
-clients_2=pd.read_csv("2_poisoning_clients.csv")
-clients_3=pd.read_csv("3_poisoning_clients.csv")
-clients_4=pd.read_csv("4_poisoning_clients.csv")
-clients_5=pd.read_csv("5_poisoning_clients.csv")
+alpha_001=pd.read_csv("alpha_0.01.csv")
+alpha_01=pd.read_csv("alpha_0.1.csv")
+alpha_1=pd.read_csv("alpha_1.csv")
+alpha_10=pd.read_csv("alpha_10.csv")
+alpha_100=pd.read_csv("alpha_100.csv")
 
 #draw
 plt.plot(
-    clients_1["round"],
-    clients_1["accuracy"] *100,
+    alpha_001["round"],
+    alpha_001["accuracy"] *100,
     marker="o",
-    label="1"
+    label="α = 0.01"
+)
+
+
+
+plt.plot(
+    alpha_01["round"],
+    alpha_01["accuracy"] *100,
+    marker="o",
+    label="α = 0.1"
 )
 
 plt.plot(
-    clients_2["round"],
-    clients_2["accuracy"] *100,
+    alpha_1["round"],
+    alpha_1["accuracy"] *100,
     marker="o",
-    label="2"
+    label="α = 1"
 )
 
 plt.plot(
-    clients_3["round"],
-    clients_3["accuracy"] *100,
+    alpha_10["round"],
+    alpha_10["accuracy"] *100,
     marker="o",
-    label="3"
+    label="α = 10"
 )
 
 plt.plot(
-    clients_4["round"],
-    clients_4["accuracy"] *100,
+    alpha_100["round"],
+    alpha_100["accuracy"] *100,
     marker="o",
-    label="4"
+    label="α = 100"
 )
-
-plt.plot(
-    clients_5["round"],
-    clients_5["accuracy"] *100,
-    marker="o",
-    label="5"
-)
-
 
 plt.xlabel("Round")
 plt.ylabel("Accuracy (%)")
-plt.ylim(0, 100)
-plt.title("Accuracy by Poisoning client's numbers")
-
+plt.title("Dirichlet Non-IID Accuracy")
 plt.legend()
 plt.grid(True)
 
 plt.tight_layout()
-plt.savefig("poisoning.png",dpi=300)
+plt.savefig("Dirichlet_Non_IID.png",dpi=300)
 
 plt.show()
