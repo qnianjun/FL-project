@@ -3,35 +3,59 @@ import pandas as pd
 
 
 #read file
-non_iid=pd.read_csv("NON_IID.csv")
-iid=pd.read_csv("IID.csv")
-
+alpha_poisoning_1=pd.read_csv("alpha_poisoning_1.csv")
+alpha_poisoning_01=pd.read_csv("alpha_poisoning_0.1.csv")
+alpha_poisoning_001=pd.read_csv("alpha_poisoning_0.01.csv")
+alpha_poisoning_10=pd.read_csv("alpha_poisoning_10.csv")
+alpha_poisoning_100=pd.read_csv("alpha_poisoning_100.csv")
 
 #draw
+
+
 plt.plot(
-    non_iid["round"],
-    non_iid["accuracy"] *100,
+    alpha_poisoning_001["round"],
+    alpha_poisoning_001["accuracy"] *100,
     marker="o",
-    label="NON_IID"
+    label="α=0.01"
+)
+
+plt.plot(
+    alpha_poisoning_01["round"],
+    alpha_poisoning_01["accuracy"] *100,
+    marker="o",
+    label="α=0.1"
 )
 
 
+plt.plot(
+    alpha_poisoning_1["round"],
+    alpha_poisoning_1["accuracy"] *100,
+    marker="o",
+    label="α=1"
+)
 
 plt.plot(
-    iid["round"],
-    iid["accuracy"] *100,
+    alpha_poisoning_10["round"],
+    alpha_poisoning_10["accuracy"] *100,
     marker="o",
-    label="IID"
+    label="α=10"
+)
+
+plt.plot(
+    alpha_poisoning_100["round"],
+    alpha_poisoning_100["accuracy"] *100,
+    marker="o",
+    label="α=100"
 )
 
 
 plt.xlabel("Round")
 plt.ylabel("Accuracy (%)")
-plt.title("IID vs Non-IID Accuracy")
+plt.title("Dirichlet Non-IID with Poisoning Accuracy")
 plt.legend()
 plt.grid(True)
 
 plt.tight_layout()
-plt.savefig("IID_vs_Non_IID.png",dpi=300)
+plt.savefig("Dirichlet_Non_IID_with_Poisoning_Poisoning.png",dpi=300)
 
 plt.show()

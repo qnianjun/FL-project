@@ -17,7 +17,7 @@ NUM_CLIENTS = 5
 
 
 POISON_CLIENT = 0   
-POISON_SCALE = 100
+POISON_SCALE = 10
 
 # alpha 越大 → 越接近 IID
 # alpha 越小 → Non-IID 越嚴重
