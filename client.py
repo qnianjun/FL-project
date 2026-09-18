@@ -1,67 +1,115 @@
 import sys
-
 import flwr as fl
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader
+import numpy as np
+
+from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, transforms
 
 
 # =========================
-# 實驗設定
+# 設定
 # =========================
 
-# 資料分布模式
-# "IID"     → 每個 Client 都隨機取得整個 MNIST 的資料
-# "NON_IID" → Client 0: 0,1
-#              Client 1: 2,3
-#              Client 2: 4,5
-#              Client 3: 6,7
-#              Client 4: 8,9
+NUM_CLIENTS = 5
 
-DATA_MODE = "NON_IID"
 
-# =========================
-# Poisoning 設定
-# =========================
-
-ENABLE_POISON = False
-
-# 哪一個 Client 是惡意 Client
-POISON_CLIENT = 0
-
-# Poisoning 強度
+POISON_CLIENT = 0   
 POISON_SCALE = 10
 
+# alpha 越大 → 越接近 IID
+# alpha 越小 → Non-IID 越嚴重
+ALPHA = 1
+
+# 固定亂數，讓實驗可以重現
+SEED = 42
+
 
 # =========================
-# 1. Model
+# Model
 # =========================
 
 class Net(nn.Module):
-
     def __init__(self):
-
         super().__init__()
 
         self.model = nn.Sequential(
             nn.Flatten(),
-
             nn.Linear(28 * 28, 128),
-
             nn.ReLU(),
-
             nn.Linear(128, 10)
         )
 
     def forward(self, x):
-
         return self.model(x)
 
 
 # =========================
-# 2. Dataset
+# 建立 Dirichlet Partition
+# =========================
+
+def create_dirichlet_partition(dataset, num_clients, alpha):
+    """
+    使用 Dirichlet distribution
+    將 MNIST 分配給不同 Client。
+
+    每一筆資料只會屬於一個 Client。
+    """
+
+    np.random.seed(SEED)
+
+    targets = np.array(dataset.targets)
+
+    client_indices = [[] for _ in range(num_clients)]
+
+    # MNIST 有 10 個類別
+    num_classes = 10
+
+    for class_id in range(num_classes):
+
+        # 找出這個 class 的所有資料
+        class_indices = np.where(targets == class_id)[0]
+
+        # 打亂
+        np.random.shuffle(class_indices)
+
+        # Dirichlet 分配比例
+        proportions = np.random.dirichlet(
+            np.repeat(alpha, num_clients)
+        )
+
+        # 根據比例計算每個 Client 要拿多少資料
+        proportions = (
+            np.cumsum(proportions) * len(class_indices)
+        ).astype(int)
+
+        proportions = np.diff(
+            np.concatenate(([0], proportions))
+        )
+
+        start = 0
+
+        for client_id, count in enumerate(proportions):
+
+            end = start + count
+
+            client_indices[client_id].extend(
+                class_indices[start:end]
+            )
+
+            start = end
+
+    # 最後再打亂每個 Client 的資料
+    for client_id in range(num_clients):
+        np.random.shuffle(client_indices[client_id])
+
+    return client_indices
+
+
+# =========================
+# Load Data
 # =========================
 
 def load_data():
@@ -86,7 +134,7 @@ def load_data():
 
 
 # =========================
-# 3. Train
+# Train
 # =========================
 
 def train(model, trainloader):
@@ -104,9 +152,9 @@ def train(model, trainloader):
 
         optimizer.zero_grad()
 
-        output = model(images)
+        outputs = model(images)
 
-        loss = criterion(output, labels)
+        loss = criterion(outputs, labels)
 
         loss.backward()
 
@@ -114,7 +162,7 @@ def train(model, trainloader):
 
 
 # =========================
-# 4. Test
+# Test
 # =========================
 
 def test(model, testloader):
@@ -123,130 +171,69 @@ def test(model, testloader):
 
     model.eval()
 
+    loss = 0
     correct = 0
     total = 0
-    loss_total = 0
 
     with torch.no_grad():
 
         for images, labels in testloader:
 
-            output = model(images)
+            outputs = model(images)
 
-            loss = criterion(output, labels)
+            batch_loss = criterion(
+                outputs,
+                labels
+            )
 
-            loss_total += loss.item()
+            loss += batch_loss.item() * len(labels)
 
-            _, predicted = torch.max(output, 1)
+            _, predicted = torch.max(
+                outputs,
+                1
+            )
 
-            total += labels.size(0)
+            total += len(labels)
 
-            correct += (predicted == labels).sum().item()
+            correct += (
+                predicted == labels
+            ).sum().item()
+
+    loss = loss / total
 
     accuracy = correct / total
 
-    return loss_total / len(testloader), accuracy
+    return loss, accuracy
 
 
 # =========================
-# 5. Flower Client
+# Flower Client
 # =========================
 
 class FlowerClient(fl.client.NumPyClient):
 
     def __init__(self, cid):
 
-        self.cid = cid
+        self.cid = int(cid)
+
+        self.model = Net()
 
         trainset, testset = load_data()
 
-        # =========================
-        # Data Partition
-        # =========================
+        # 建立 Dirichlet partition
+        partitions = create_dirichlet_partition(
+            trainset,
+            NUM_CLIENTS,
+            ALPHA
+        )
 
-        NUM_CLIENTS = 5
+        # 取得這個 Client 的資料
+        client_indices = partitions[self.cid]
 
-        cid_int = int(cid)
-
-        # -------------------------
-        # IID
-        # -------------------------
-
-        if DATA_MODE == "IID":
-
-            # 固定亂數種子
-            # 讓所有 Client 使用相同的資料切分方式
-
-            generator = torch.Generator()
-
-            generator.manual_seed(42)
-
-            # 隨機打亂所有資料
-
-            indices = torch.randperm(
-                len(trainset),
-                generator=generator
-            )
-
-            # 平均切成 5 份
-
-            client_indices = torch.chunk(
-                indices,
-                NUM_CLIENTS
-            )[cid_int].tolist()
-
-        # -------------------------
-        # Non-IID
-        # -------------------------
-
-        elif DATA_MODE == "NON_IID":
-
-            client_labels = {
-
-                0: [0, 1],
-
-                1: [2, 3],
-
-                2: [4, 5],
-
-                3: [6, 7],
-
-                4: [8, 9]
-            }
-
-            my_labels = client_labels[cid_int]
-
-            client_indices = [
-
-                i
-
-                for i, label in enumerate(trainset.targets)
-
-                if int(label) in my_labels
-            ]
-
-        else:
-
-            raise ValueError(
-                "DATA_MODE is worong"
-            )
-
-
-        # =========================
-        # 建立 Client Dataset
-        # =========================
-
-        self.trainset = torch.utils.data.Subset(
+        self.trainset = Subset(
             trainset,
             client_indices
         )
-
-        self.testset = testset
-
-
-        # =========================
-        # DataLoader
-        # =========================
 
         self.trainloader = DataLoader(
             self.trainset,
@@ -254,193 +241,123 @@ class FlowerClient(fl.client.NumPyClient):
             shuffle=True
         )
 
+        self.testset = testset
+
         self.testloader = DataLoader(
             self.testset,
-            batch_size=128
+            batch_size=32,
+            shuffle=False
         )
-
-
-        # =========================
-        # Model
-        # =========================
-
-        self.model = Net()
-
-
-        # =========================
-        # 顯示 Client 資料資訊
-        # =========================
 
         print(
-            f"Client {self.cid} | "
-            f"Mode={DATA_MODE} | "
-            f"Training samples={len(self.trainset)}"
+            f"Client {self.cid}: "
+            f"{len(self.trainset)} training samples"
         )
 
 
-# =========================
-# Parameters
-# =========================
+    # =====================
+    # Get Parameters
+    # =====================
 
     def get_parameters(self, config):
 
         return [
-
-            val.cpu().numpy()
-
-            for val in self.model.state_dict().values()
+            value.cpu().numpy()
+            for value in self.model.state_dict().values()
         ]
 
+
+    # =====================
+    # Set Parameters
+    # =====================
 
     def set_parameters(self, parameters):
 
         params_dict = zip(
-
             self.model.state_dict().keys(),
-
             parameters
         )
 
         state_dict = {
-
             key: torch.tensor(value)
-
             for key, value in params_dict
         }
 
         self.model.load_state_dict(
-
             state_dict,
-
             strict=True
         )
 
 
-# =========================
-# Fit
-# =========================
+    # =====================
+    # Fit
+    # =====================
 
     def fit(self, parameters, config):
 
+        # 取得 Server 傳來的模型
         self.set_parameters(parameters)
 
+        # 保存訓練前的參數
+        old_parameters = self.get_parameters(config={})
 
-        # =========================
-        # 保存 Global Model
-        # =========================
-
-        old_parameters = self.get_parameters(
-            config={}
-        )
-
-
-        # =========================
-        # Local Training
-        # =========================
-
+        # 正常訓練
         train(
             self.model,
             self.trainloader
         )
 
+        # 取得訓練後的參數
+        new_parameters = self.get_parameters(config={})
 
         # =========================
-        # Training 後 Model
+        # Poisoning Attack
         # =========================
 
-        new_parameters = self.get_parameters(
-            config={}
-        )
-
-
-        # =========================
-        # Model Poisoning
-        # =========================
-
-        if (
-            ENABLE_POISON
-            and
-            int(self.cid) == POISON_CLIENT
-        ):
+        if self.cid == POISON_CLIENT:
 
             print(
-                f"[!] Client {self.cid} "
-                f"is malicious "
+                f"[!] Client {self.cid} is malicious "
                 f"(scale={POISON_SCALE})"
             )
 
+            for i in range(len(new_parameters)):
 
-            for i in range(
-                len(new_parameters)
-            ):
-
-                # Local Update
-
+                # 計算正常的 Model Update
                 update = (
-
                     new_parameters[i]
-
-                    -
-                    
-                    old_parameters[i]
+                    - old_parameters[i]
                 )
 
-
-                # 放大 Update
-
+                # 放大 Model Update
                 new_parameters[i] = (
-
                     old_parameters[i]
-
-                    +
-
-                    POISON_SCALE * update
+                    + POISON_SCALE * update
                 )
-
-
-        # =========================
-        # Return
-        # =========================
 
         return (
-
             new_parameters,
-
             len(self.trainset),
-
             {}
         )
 
 
-# =========================
-# Evaluate
-# =========================
+    # =====================
+    # Evaluate
+    # =====================
 
-    def evaluate(
-        self,
-        parameters,
-        config
-    ):
+    def evaluate(self, parameters, config):
 
-        self.set_parameters(
-            parameters
-        )
-
+        self.set_parameters(parameters)
 
         loss, accuracy = test(
-
             self.model,
-
             self.testloader
         )
 
-
         return (
-
             float(loss),
-
             len(self.testset),
-
             {
                 "accuracy": float(accuracy)
             }
@@ -448,20 +365,16 @@ class FlowerClient(fl.client.NumPyClient):
 
 
 # =========================
-# 6. Start Client
+# Start Client
 # =========================
 
 if __name__ == "__main__":
 
     cid = sys.argv[1]
 
-
     client = FlowerClient(cid)
 
-
     fl.client.start_client(
-
         server_address="127.0.0.1:8080",
-
         client=client.to_client()
     )
