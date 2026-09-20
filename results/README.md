@@ -2,12 +2,25 @@
 
 Organized on 2026-09-20. Raw CSV contents are preserved unchanged.
 
-New controlled experiments are stored separately under `experiments/`. The next test is [three matched seeds at alpha 0.1 and scale 10](experiments/2026-09-20_alpha_0.1_scale_10_three_seeds/REPORT.md). Each experiment has its own configurations, source snapshots, checksums, and summary; the historical catalog remains unchanged.
+## Data usable now
+
+Use the following two completed experiment sets for the main analysis. Both passed saved-result validation: checksums, paired initial weights and partitions, full training-data coverage, and update scaling. Each uses seeds 42, 43, and 44, five clients, ten rounds, and client 0 scaling its update by 10.
+
+| Alpha | Clean accuracy, mean ± sample SD | Poisoned accuracy, mean ± sample SD | Paired drop, mean ± sample SD | Report |
+| --- | --- | --- | --- | --- |
+| 0.01 | 69.96% ± 6.30 pp | 43.20% ± 33.45 pp | 26.76 ± 27.87 pp | [Results and chart](experiments/2026-09-20_alpha_0.01_scale_10_three_seeds/REPORT.md) |
+| 0.1 | 82.87% ± 6.24 pp | 48.65% ± 31.82 pp | 34.22 ± 30.08 pp | [Results and chart](experiments/2026-09-20_alpha_0.1_scale_10_three_seeds/REPORT.md) |
+
+Here, pp means percentage points. There are **12 controlled runs total**, not 12 independent seeds: each setting has three paired repetitions. These results support describing attack effects at the tested settings; they do not yet establish that smaller alpha always causes more attack damage. Variation is large, and changing alpha also changes the attacking client's sample count and FedAvg weight.
+
+The former `experiments/alpha_001/` folder was renamed to `experiments/2026-09-20_alpha_0.01_scale_10_three_seeds/`; its recorded configuration confirms alpha 0.01. Raw outputs were not changed. Each controlled experiment has its own configurations, source snapshots, checksums, and summary; the historical catalog remains unchanged.
 
 ## Where to find data
 
 | Location | Meaning | Permitted use |
 | --- | --- | --- |
+| `experiments/2026-09-20_alpha_*/` | Two validated controlled experiment sets | Main analysis, with three matched seeds per setting |
+| `experiments/manual_unverified/` | Standalone result and configuration observed during cleanup | Preliminary observation only; not an additional controlled repeat |
 | `baselines/initial_alpha_sweep/` | Five recent no-attack runs | Preliminary baseline plots; not three controlled repeats |
 | `archive/legacy/` | Older CSVs, plots, and source snapshots, grouped as before | Historical reference; consult catalog status before analysis |
 | `archive/recovered_index/` | CSVs missing from disk but preserved in the pre-cleanup Git index | Provenance recovery only; duplicates are not extra runs |

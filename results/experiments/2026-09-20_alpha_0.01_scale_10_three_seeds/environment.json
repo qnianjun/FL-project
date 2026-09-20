@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-09-20T10:12:49.460722+00:00",
+  "base_commit": "85eda7ae613b131d266784ba36f8bf8f026e4de6",
+  "working_tree_status": "?? results/experiments/alpha_001/\n",
+  "source_sha256": {
+    "client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "config.json": "1cec05da9f8f5b9f2d2e8dbe58f2baa66eb404f288b3feff31bcf097abb3488e",
+    "run_matched.py": "effe4910ed5da001ba10f40d1da7397b4092f84d66af0fdef46a58fbaf94af4f"
+  },
+  "python": "3.13.12",
+  "packages": {
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "numpy": "2.5.3",
+    "flwr": "1.36.0"
+  },
+  "execution": "Sequential CPU clients; Flower aggregate; all 5 clients every round; global test set evaluated once",
+  "torch_threads": 1,
+  "deterministic_algorithms": true
+}

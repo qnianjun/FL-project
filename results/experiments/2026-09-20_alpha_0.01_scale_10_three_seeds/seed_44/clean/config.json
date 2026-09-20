@@ -1,0 +1,97 @@
+{
+  "seed": 44,
+  "alpha": 0.01,
+  "enable_poison": false,
+  "poison_client": 0,
+  "poison_scale": 10.0,
+  "rounds": 10,
+  "num_clients": 5,
+  "batch_size": 32,
+  "local_epochs": 1,
+  "optimizer": "SGD",
+  "learning_rate": 0.01,
+  "shuffle_seeds": [
+    1044,
+    1045,
+    1046,
+    1047,
+    1048
+  ],
+  "client_sample_counts": [
+    11983,
+    17494,
+    6494,
+    11802,
+    12227
+  ],
+  "client_label_counts": [
+    [
+      0,
+      248,
+      0,
+      6012,
+      0,
+      0,
+      0,
+      0,
+      0,
+      5723
+    ],
+    [
+      0,
+      0,
+      0,
+      118,
+      0,
+      5421,
+      5879,
+      0,
+      5851,
+      225
+    ],
+    [
+      0,
+      6493,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      5922,
+      0,
+      0,
+      0,
+      5841,
+      0,
+      39,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      5958,
+      1,
+      1,
+      0,
+      0,
+      6265,
+      0,
+      0
+    ]
+  ],
+  "initial_parameters_sha256": "4deba14911ea48403d811755bdeac51c5745615c5f09436b1ba115d074f8beec",
+  "partition_sha256": [
+    "239551b1b98bb7c370cfd587cc43cbb54a6dc32478ff720af0f7785077bd8f4e",
+    "18360d5816e7d23267ef9350ecef13492b3d8b631f7afe23e7c666763f24c4f0",
+    "9b1a52a189cb76e7908246a133144a2219e406215664dc403c4a6751bdc08721",
+    "df2228f913c0dceb733699f47bde9b68d0191a516205d9c5156ded478c7e1865",
+    "951917f21da4605deeeee2b97d4a2c0184801252d8c97380dd48cd4e0ba69cdb"
+  ]
+}
