@@ -25,9 +25,7 @@ Verify the archive with `python3 scripts/verify_result_catalog.py` and the param
 ```python3 -c "from torchvision import datasets, transforms; datasets.MNIST('./data', download=True)"```
 
 
-
-
-                2027 科展
+```             2027 科展
                     │
                     ▼
              Federated Learning
@@ -53,4 +51,4 @@ Verify the archive with `python3 scripts/verify_result_catalog.py` and the param
                 自己的方法
                     │
                     ▼
-              大量實驗證明有效
+              大量實驗證明有效```
