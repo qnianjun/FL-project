@@ -1,0 +1,7 @@
+{
+    "alpha": 0.1,
+    "enable_poison": false,
+    "poison_client": 0,
+    "poison_scale": 10,
+    "seed": 42
+}

@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-09-20T11:36:11.285401+00:00",
+  "base_commit": "e77865bf327195739d4176a01b6dae1fcf75e49a",
+  "working_tree_status": " M README.md\n M results/experiments/2026-09-20_alpha_0.01_scale_10_three_seeds/REPORT.md\n M results/experiments/2026-09-20_alpha_0.1_scale_10_three_seeds/REPORT.md\n M scripts/report_matched.py\n?? docs/\n?? results/experiments/2026-09-20_alpha_0.01_scale_10_three_seeds/loss.png\n?? results/experiments/2026-09-20_alpha_0.1_scale_10_three_seeds/loss.png\n?? results/experiments/2026-09-20_alpha_100_scale_10_three_seeds/\n?? results/experiments/2026-09-20_alpha_10_scale_10_three_seeds/\n?? results/experiments/2026-09-20_alpha_1_scale_10_three_seeds/\n?? results/studies/\n?? run_study.py\n?? run_study.sh\n?? tests/test_study.py\n",
+  "source_sha256": {
+    "client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "run_matched.py": "effe4910ed5da001ba10f40d1da7397b4092f84d66af0fdef46a58fbaf94af4f"
+  },
+  "python": "3.13.12",
+  "packages": {
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "numpy": "2.5.3",
+    "flwr": "1.36.0"
+  },
+  "execution": "Sequential CPU clients; Flower aggregate; all 5 clients every round; global test set evaluated once",
+  "torch_threads": 1,
+  "deterministic_algorithms": true
+}

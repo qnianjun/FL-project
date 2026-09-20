@@ -12,7 +12,15 @@ Five clients, 10 rounds, one local epoch, SGD learning rate 0.01, batch size 32,
 - Poisoned mean ± sample SD: **43.20% ± 33.45 percentage points**.
 - Paired accuracy drop: **26.76 ± 27.87 percentage points**.
 
+Accuracy damage = clean accuracy minus poisoned accuracy (percentage points).
+Loss damage = poisoned loss minus clean loss. Positive damage means worse performance.
+
+- Clean final loss: **0.9067 ± 0.1200**.
+- Poisoned final loss: **14.0243 ± 22.1464**.
+- Paired loss damage: **13.1177 ± 22.0449**.
+
 ![Accuracy curves with sample standard deviation](accuracy.png)
+![Loss curves with sample standard deviation](loss.png)
 
 ## Checks and limits
 
@@ -29,6 +37,6 @@ Preflight found and fixed a partition rounding bug that could omit final samples
 Reproduce into a new directory:
 
 ```bash
-.venv/bin/python run_matched.py --output results/experiments/NEW_RUN
+.venv/bin/python run_matched.py --alpha 0.01 --scale 10 --seeds 42 43 44 --rounds 10 --output results/experiments/NEW_RUN
 .venv/bin/python scripts/report_matched.py results/experiments/NEW_RUN
 ```

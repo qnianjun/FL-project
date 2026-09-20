@@ -23,6 +23,7 @@ for name, digest in json.loads((root / 'checksums.json').read_text()).items():
 summary = json.loads((root / 'summary.json').read_text())
 seeds = sorted({r['seed'] for r in summary['runs']})
 curves = {'clean': [], 'poisoned': []}
+loss_curves = {'clean': [], 'poisoned': []}
 counts = []
 rows = []
 for seed in seeds:
@@ -37,6 +38,7 @@ for seed in seeds:
         assert [int(r['round']) for r in results] == list(range(1, cfg['rounds'] + 1))
         scores.append(float(results[-1]['accuracy']))
         curves[mode].append([float(r['accuracy']) * 100 for r in results])
+        loss_curves[mode].append([float(r['loss']) for r in results])
         with (folder / 'updates.csv').open() as handle:
             updates = list(csv.DictReader(handle))
         assert len(updates) == cfg['rounds'] * cfg['num_clients']
@@ -76,6 +78,23 @@ ax.legend(title='Mean ± sample SD')
 ax.grid(alpha=0.2)
 fig.tight_layout()
 fig.savefig(root / 'accuracy.png', dpi=160)
+plt.close(fig)
+fig, ax = plt.subplots(figsize=(8, 5))
+for mode, values in loss_curves.items():
+    values = np.array(values)
+    mean, std = values.mean(axis=0), values.std(axis=0, ddof=1)
+    ax.plot(x, mean, marker='o', label=mode)
+    ax.fill_between(x, mean-std, mean+std, alpha=0.18)
+ax.set(xlabel='Federated round', ylabel='MNIST test cross-entropy loss',
+       title=f"Alpha {configs[0]['alpha']}, update scale {configs[1]['poison_scale']:g}")
+ax.legend(title='Mean ± sample SD')
+ax.grid(alpha=0.2)
+fig.tight_layout()
+fig.savefig(root / 'loss.png', dpi=160)
+plt.close(fig)
+clean_losses = [r[-1] for r in loss_curves['clean']]
+poisoned_losses = [r[-1] for r in loss_curves['poisoned']]
+loss_damage = [p-c for c, p in zip(clean_losses, poisoned_losses)]
 report = f'''# Matched poisoning experiment
 
 Five clients, {configs[0]['rounds']} rounds, one local epoch, SGD learning rate 0.01, batch size 32, MNIST, alpha {configs[0]['alpha']}, client 0 update scale {configs[1]['poison_scale']:g}. Seeds: {', '.join(map(str, seeds))}.
@@ -88,7 +107,15 @@ Five clients, {configs[0]['rounds']} rounds, one local epoch, SGD learning rate 
 - Poisoned mean ± sample SD: **{statistics.mean(poisoned):.2f}% ± {statistics.stdev(poisoned):.2f} percentage points**.
 - Paired accuracy drop: **{statistics.mean(drops):.2f} ± {statistics.stdev(drops):.2f} percentage points**.
 
+Accuracy damage = clean accuracy minus poisoned accuracy (percentage points).
+Loss damage = poisoned loss minus clean loss. Positive damage means worse performance.
+
+- Clean final loss: **{statistics.mean(clean_losses):.4f} ± {statistics.stdev(clean_losses):.4f}**.
+- Poisoned final loss: **{statistics.mean(poisoned_losses):.4f} ± {statistics.stdev(poisoned_losses):.4f}**.
+- Paired loss damage: **{statistics.mean(loss_damage):.4f} ± {statistics.stdev(loss_damage):.4f}**.
+
 ![Accuracy curves with sample standard deviation](accuracy.png)
+![Loss curves with sample standard deviation](loss.png)
 
 ## Checks and limits
 
@@ -105,7 +132,7 @@ Preflight found and fixed a partition rounding bug that could omit final samples
 Reproduce into a new directory:
 
 ```bash
-.venv/bin/python run_matched.py --output results/experiments/NEW_RUN
+.venv/bin/python run_matched.py --alpha {configs[0]['alpha']} --scale {configs[1]['poison_scale']:g} --seeds {' '.join(map(str, seeds))} --rounds {configs[0]['rounds']} --output results/experiments/NEW_RUN
 .venv/bin/python scripts/report_matched.py results/experiments/NEW_RUN
 ```
 '''

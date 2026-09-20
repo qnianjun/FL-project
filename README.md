@@ -1,5 +1,9 @@
 ## Experiment records
 
+The current [research design](docs/STUDY_PLAN.md) has two experiments: **A varies alpha** (0.01, 0.1, 1, 10, 100) with scale 10; **B varies scale** (1, 2, 5, 10, 20) with alpha 0.1. Each setting uses seeds 42, 43, and 44, matched clean/poisoned runs, and accuracy/loss damage measurements.
+
+Preview with `bash run_study.sh --reuse-existing`. Start training yourself with `bash run_study.sh --reuse-existing --run`. The two existing validated settings can be reused, leaving 42 new training runs. The default output is `results/studies/alpha_scale/`.
+
 See [the experiment data record](results/README.md) for the available baselines, archived results, known poisoning bug, and three-repeat protocol. [The catalog](results/catalog.csv) records original paths, validity labels, checksums, and final metrics. Existing raw data is preserved. New matched experiments are stored separately under `results/experiments/`.
 
 Usable controlled results now cover **alpha 0.01 and 0.1 at poisoning scale 10**, each with three matched clean/poisoned repetitions (12 runs total). See [the results guide](results/README.md#data-usable-now) for the comparison and limits. Historical baselines are preliminary; old buggy poisoning results are excluded from attack analysis.

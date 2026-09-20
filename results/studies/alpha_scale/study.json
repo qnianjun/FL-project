@@ -1,0 +1,71 @@
+{
+  "experiment": "all",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "rounds": 10,
+  "entries": [
+    {
+      "experiment": "A",
+      "alpha": 0.01,
+      "scale": 10,
+      "path": "/home/mark/FL-project/results/experiments/2026-09-20_alpha_0.01_scale_10_three_seeds"
+    },
+    {
+      "experiment": "A",
+      "alpha": 0.1,
+      "scale": 10,
+      "path": "/home/mark/FL-project/results/experiments/2026-09-20_alpha_0.1_scale_10_three_seeds"
+    },
+    {
+      "experiment": "A",
+      "alpha": 1,
+      "scale": 10,
+      "path": "/home/mark/FL-project/results/studies/alpha_scale/alpha_1_scale_10"
+    },
+    {
+      "experiment": "A",
+      "alpha": 10,
+      "scale": 10,
+      "path": "/home/mark/FL-project/results/studies/alpha_scale/alpha_10_scale_10"
+    },
+    {
+      "experiment": "A",
+      "alpha": 100,
+      "scale": 10,
+      "path": "/home/mark/FL-project/results/studies/alpha_scale/alpha_100_scale_10"
+    },
+    {
+      "experiment": "B",
+      "alpha": 0.1,
+      "scale": 1,
+      "path": "/home/mark/FL-project/results/studies/alpha_scale/alpha_0.1_scale_1"
+    },
+    {
+      "experiment": "B",
+      "alpha": 0.1,
+      "scale": 2,
+      "path": "/home/mark/FL-project/results/studies/alpha_scale/alpha_0.1_scale_2"
+    },
+    {
+      "experiment": "B",
+      "alpha": 0.1,
+      "scale": 5,
+      "path": "/home/mark/FL-project/results/studies/alpha_scale/alpha_0.1_scale_5"
+    },
+    {
+      "experiment": "B",
+      "alpha": 0.1,
+      "scale": 10,
+      "path": "/home/mark/FL-project/results/experiments/2026-09-20_alpha_0.1_scale_10_three_seeds"
+    },
+    {
+      "experiment": "B",
+      "alpha": 0.1,
+      "scale": 20,
+      "path": "/home/mark/FL-project/results/studies/alpha_scale/alpha_0.1_scale_20"
+    }
+  ]
+}
