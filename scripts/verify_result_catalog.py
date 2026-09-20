@@ -28,6 +28,8 @@ for record in records:
         assert 0 <= float(row["accuracy"]) <= 1, path
     assert rows[-1]["accuracy"] == record["final_accuracy"], path
     assert rows[-1]["loss"] == record["final_loss"], path
-actual = set((root / "results").rglob("*.csv")) - {root / "results/catalog.csv"}
+actual = set((root / "results/archive").rglob("*.csv")) | set(
+    (root / "results/baselines").rglob("*.csv")
+)
 assert actual == paths, "CSV inventory differs from catalog"
 print(f"Verified {len(paths)} files, {len(hashes)} unique byte contents; duplicates are not repeats.")

@@ -1,0 +1,6 @@
+{
+    "alpha": 100,
+    "enable_poison": false,
+    "poison_client": 0,
+    "poison_scale": 10
+}

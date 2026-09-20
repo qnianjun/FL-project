@@ -2,6 +2,8 @@
 
 Organized on 2026-09-20. Raw CSV contents are preserved unchanged.
 
+New controlled experiments are stored separately under `experiments/`. The next test is [three matched seeds at alpha 0.1 and scale 10](experiments/2026-09-20_alpha_0.1_scale_10_three_seeds/REPORT.md). Each experiment has its own configurations, source snapshots, checksums, and summary; the historical catalog remains unchanged.
+
 ## Where to find data
 
 | Location | Meaning | Permitted use |
@@ -35,11 +37,11 @@ The archived attack scripts retain the original bug for historical traceability.
 
 ## Three-repeat protocol for the next experiments
 
-1. Use seeds 42, 43, and 44 for each setting, controlling NumPy and PyTorch. The current runner does not implement this yet.
+1. Use seeds 42, 43, and 44 for each setting, controlling NumPy and PyTorch. `run_matched.py` implements this protocol; the older `run_all.py` does not.
 2. Within each seed, match clean and attacked runs on initial server weights, partition, client training randomness, and training settings.
 3. Save each run in a unique directory with its exact configuration, source commit, dependency versions, client sample counts, and per-round CSV. Do not overwrite this archive.
 4. Report the mean and sample standard deviation of round-10 accuracy across the three runs, and the paired clean-minus-attacked accuracy drop.
 
-Three repeats assess variability; they do not establish implementation correctness. No new training runs were performed during this cleanup. The older runner still writes files in the repository root and can overwrite results on repeated invocations.
+Three repeats assess variability; they do not establish implementation correctness. No new training runs were performed during the initial archive cleanup; subsequent experiments live under `experiments/`. The older runner still writes files in the repository root and can overwrite results on repeated invocations. The new runner requires a fresh output directory.
 
 Run `python3 scripts/verify_result_catalog.py` to check the archived inventory.
