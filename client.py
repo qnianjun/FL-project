@@ -4,27 +4,53 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
+import json
 
 from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, transforms
 
+#------------多次-----------------#
 
 # =========================
-# 設定
+# 實驗設定
 # =========================
+with open("config.json", "r") as f:
+    cfg = json.load(f)
 
 NUM_CLIENTS = 5
 
+ENABLE_POISON = cfg["enable_poison"]
 
-POISON_CLIENT = 0   
-POISON_SCALE = 10
+POISON_CLIENT = cfg["poison_client"]
 
-# alpha 越大 → 越接近 IID
-# alpha 越小 → Non-IID 越嚴重
-ALPHA = 1
+POISON_SCALE = cfg["poison_scale"]
 
-# 固定亂數，讓實驗可以重現
+ALPHA = cfg["alpha"]
+
 SEED = 42
+
+#------------單次-----------------#
+# # =========================
+# # 實驗設定
+# # =========================
+
+# NUM_CLIENTS = 5
+
+
+# # ---------- Poisoning ----------
+
+# ENABLE_POISON = False
+
+# POISON_CLIENT = 0
+# POISON_SCALE = 10
+
+# # ---------- Dirichlet ----------
+
+# ALPHA = 0.1
+
+# # ---------- Random Seed ----------
+
+# SEED = 42
 
 
 # =========================
@@ -32,17 +58,25 @@ SEED = 42
 # =========================
 
 class Net(nn.Module):
+
     def __init__(self):
+
         super().__init__()
 
         self.model = nn.Sequential(
+
             nn.Flatten(),
+
             nn.Linear(28 * 28, 128),
+
             nn.ReLU(),
+
             nn.Linear(128, 10)
+
         )
 
     def forward(self, x):
+
         return self.model(x)
 
 
@@ -51,6 +85,7 @@ class Net(nn.Module):
 # =========================
 
 def create_dirichlet_partition(dataset, num_clients, alpha):
+
     """
     使用 Dirichlet distribution
     將 MNIST 分配給不同 Client。
@@ -62,27 +97,35 @@ def create_dirichlet_partition(dataset, num_clients, alpha):
 
     targets = np.array(dataset.targets)
 
-    client_indices = [[] for _ in range(num_clients)]
+    client_indices = [
+        [] for _ in range(num_clients)
+    ]
 
-    # MNIST 有 10 個類別
     num_classes = 10
 
     for class_id in range(num_classes):
 
         # 找出這個 class 的所有資料
-        class_indices = np.where(targets == class_id)[0]
+
+        class_indices = np.where(
+            targets == class_id
+        )[0]
 
         # 打亂
+
         np.random.shuffle(class_indices)
 
         # Dirichlet 分配比例
+
         proportions = np.random.dirichlet(
             np.repeat(alpha, num_clients)
         )
 
-        # 根據比例計算每個 Client 要拿多少資料
+        # 根據比例計算資料數量
+
         proportions = (
-            np.cumsum(proportions) * len(class_indices)
+            np.cumsum(proportions)
+            * len(class_indices)
         ).astype(int)
 
         proportions = np.diff(
@@ -102,8 +145,12 @@ def create_dirichlet_partition(dataset, num_clients, alpha):
             start = end
 
     # 最後再打亂每個 Client 的資料
+
     for client_id in range(num_clients):
-        np.random.shuffle(client_indices[client_id])
+
+        np.random.shuffle(
+            client_indices[client_id]
+        )
 
     return client_indices
 
@@ -154,7 +201,10 @@ def train(model, trainloader):
 
         outputs = model(images)
 
-        loss = criterion(outputs, labels)
+        loss = criterion(
+            outputs,
+            labels
+        )
 
         loss.backward()
 
@@ -186,7 +236,10 @@ def test(model, testloader):
                 labels
             )
 
-            loss += batch_loss.item() * len(labels)
+            loss += (
+                batch_loss.item()
+                * len(labels)
+            )
 
             _, predicted = torch.max(
                 outputs,
@@ -210,7 +263,9 @@ def test(model, testloader):
 # Flower Client
 # =========================
 
-class FlowerClient(fl.client.NumPyClient):
+class FlowerClient(
+    fl.client.NumPyClient
+):
 
     def __init__(self, cid):
 
@@ -220,15 +275,23 @@ class FlowerClient(fl.client.NumPyClient):
 
         trainset, testset = load_data()
 
-        # 建立 Dirichlet partition
+
+        # =========================
+        # 建立 Dirichlet Partition
+        # =========================
+
         partitions = create_dirichlet_partition(
             trainset,
             NUM_CLIENTS,
             ALPHA
         )
 
+
         # 取得這個 Client 的資料
-        client_indices = partitions[self.cid]
+
+        client_indices = partitions[
+            self.cid
+        ]
 
         self.trainset = Subset(
             trainset,
@@ -249,27 +312,30 @@ class FlowerClient(fl.client.NumPyClient):
             shuffle=False
         )
 
+
         print(
             f"Client {self.cid}: "
             f"{len(self.trainset)} training samples"
         )
 
 
-    # =====================
+    # =========================
     # Get Parameters
-    # =====================
+    # =========================
 
     def get_parameters(self, config):
 
+        # Copy CPU arrays so training cannot mutate saved parameter snapshots.
         return [
-            value.cpu().numpy()
-            for value in self.model.state_dict().values()
+            value.cpu().numpy().copy()
+            for value
+            in self.model.state_dict().values()
         ]
 
 
-    # =====================
+    # =========================
     # Set Parameters
-    # =====================
+    # =========================
 
     def set_parameters(self, parameters):
 
@@ -289,51 +355,79 @@ class FlowerClient(fl.client.NumPyClient):
         )
 
 
-    # =====================
+    # =========================
     # Fit
-    # =====================
+    # =========================
 
     def fit(self, parameters, config):
 
-        # 取得 Server 傳來的模型
+        # Server 傳來的模型
+
         self.set_parameters(parameters)
 
-        # 保存訓練前的參數
-        old_parameters = self.get_parameters(config={})
 
+        # 保存訓練前參數
+
+        old_parameters = (
+            self.get_parameters(
+                config={}
+            )
+        )
+
+
+        # =========================
         # 正常訓練
+        # =========================
+
         train(
             self.model,
             self.trainloader
         )
 
-        # 取得訓練後的參數
-        new_parameters = self.get_parameters(config={})
+
+        # 訓練後參數
+
+        new_parameters = (
+            self.get_parameters(
+                config={}
+            )
+        )
+
 
         # =========================
         # Poisoning Attack
         # =========================
 
-        if self.cid == POISON_CLIENT:
+        if (
+            ENABLE_POISON
+            and self.cid == POISON_CLIENT
+        ):
 
             print(
-                f"[!] Client {self.cid} is malicious "
+                f"[!] Client {self.cid} "
+                f"is malicious "
                 f"(scale={POISON_SCALE})"
             )
 
-            for i in range(len(new_parameters)):
+            for i in range(
+                len(new_parameters)
+            ):
 
-                # 計算正常的 Model Update
+                # 正常 Model Update
+
                 update = (
                     new_parameters[i]
                     - old_parameters[i]
                 )
 
+
                 # 放大 Model Update
+
                 new_parameters[i] = (
                     old_parameters[i]
                     + POISON_SCALE * update
                 )
+
 
         return (
             new_parameters,
@@ -342,11 +436,15 @@ class FlowerClient(fl.client.NumPyClient):
         )
 
 
-    # =====================
+    # =========================
     # Evaluate
-    # =====================
+    # =========================
 
-    def evaluate(self, parameters, config):
+    def evaluate(
+        self,
+        parameters,
+        config
+    ):
 
         self.set_parameters(parameters)
 
@@ -359,7 +457,8 @@ class FlowerClient(fl.client.NumPyClient):
             float(loss),
             len(self.testset),
             {
-                "accuracy": float(accuracy)
+                "accuracy":
+                float(accuracy)
             }
         )
 
