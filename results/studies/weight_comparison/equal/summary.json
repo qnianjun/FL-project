@@ -1,0 +1,45 @@
+{
+  "aggregation": "equal",
+  "alpha": 0.1,
+  "scale": 10,
+  "samples_per_client_by_seed": {
+    "42": [
+      14100,
+      7851,
+      17809,
+      6365,
+      13875
+    ],
+    "43": [
+      1135,
+      27149,
+      17961,
+      10318,
+      3437
+    ],
+    "44": [
+      17912,
+      17629,
+      7873,
+      9338,
+      7248
+    ]
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "clean_accuracy_mean": 0.8437,
+  "clean_accuracy_sample_std": 0.046849973319095926,
+  "poisoned_accuracy_mean": 0.5045,
+  "poisoned_accuracy_sample_std": 0.14073304515997656,
+  "clean_loss_mean": 0.5150705164114634,
+  "clean_loss_sample_std": 0.08790019879063055,
+  "poisoned_loss_mean": 2.6470819297154744,
+  "poisoned_loss_sample_std": 2.4190214818529787,
+  "accuracy_damage_pp_mean": 33.92,
+  "accuracy_damage_pp_sample_std": 9.401654109783022,
+  "loss_damage_mean": 2.132011413304011,
+  "loss_damage_sample_std": 2.331448969197705
+}

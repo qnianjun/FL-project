@@ -8,5 +8,5 @@ models/
 *.pt
 *.pth
 *.onnx
-
+.agents
 .env

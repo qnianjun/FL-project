@@ -1,5 +1,7 @@
 # Experiment data record
 
+最新進度請看 [資料總覽 INDEX.md](INDEX.md)：A/B 全套已完成（九個不同設定、54 次訓練），實驗 C 程式已準備。下方兩組結果是較早的階段摘要，完整 A/B 統計以 `studies/alpha_scale/summary.csv` 為準。
+
 Organized on 2026-09-20. Raw CSV contents are preserved unchanged.
 
 ## Data usable now

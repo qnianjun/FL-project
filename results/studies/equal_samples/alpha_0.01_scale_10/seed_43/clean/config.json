@@ -1,0 +1,99 @@
+{
+  "seed": 43,
+  "alpha": 0.01,
+  "enable_poison": false,
+  "partition_method": "capacity_constrained_dirichlet_v1",
+  "samples_per_client": 12000,
+  "poison_client": 0,
+  "poison_scale": 10.0,
+  "rounds": 10,
+  "num_clients": 5,
+  "batch_size": 32,
+  "local_epochs": 1,
+  "optimizer": "SGD",
+  "learning_rate": 0.01,
+  "shuffle_seeds": [
+    1043,
+    1044,
+    1045,
+    1046,
+    1047
+  ],
+  "client_sample_counts": [
+    12000,
+    12000,
+    12000,
+    12000,
+    12000
+  ],
+  "client_label_counts": [
+    [
+      4538,
+      0,
+      0,
+      4628,
+      0,
+      797,
+      1076,
+      928,
+      0,
+      33
+    ],
+    [
+      0,
+      1294,
+      3552,
+      0,
+      3552,
+      3332,
+      0,
+      270,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3411,
+      3591,
+      3329,
+      1669
+    ],
+    [
+      1002,
+      5043,
+      0,
+      563,
+      0,
+      473,
+      529,
+      550,
+      0,
+      3840
+    ],
+    [
+      383,
+      405,
+      2406,
+      940,
+      2290,
+      819,
+      902,
+      926,
+      2522,
+      407
+    ]
+  ],
+  "initial_parameters_sha256": "bb4edc3421a81a091c955b744bb61d6c72d9d25a261de24a04adc2ae5c7a3acb",
+  "partition_sha256": [
+    "cf1a171bec848018695dbb3bd8f5d46623d4a725afc0304da28b48d3a9813f92",
+    "22994c8270a1500825511438156187b033ecf32190296d87e9376bdd651a0ccc",
+    "0da19d9ce5012e5e36bd95801ce1bf35c7e1003bd9b7c767da41964f7981f1f2",
+    "fcc4936fb77a8cdddb5e4604ea4d6635b8075ca005b301d55f40da1d2918356a",
+    "ee09c24ad1a07f323952228d9bbe3519619eee925888cf46a4b842d48daa8c91"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-09-21T10:50:27.719851+00:00",
+  "base_commit": "1e3d53221e4bfaf068752b2acf10318a391b31d6",
+  "working_tree_status": " M README.md\n M results/README.md\n?? TISF.docx\n?? balanced_partition.py\n?? docs/EXPERIMENT_C.md\n?? reports/\n?? results/INDEX.md\n?? results/studies/equal_samples/\n?? run_balanced.py\n?? run_experiment_c.py\n?? run_experiment_c.sh\n?? scripts/build_science_report.py\n?? tests/test_balanced_partition.py\n",
+  "source_sha256": {
+    "client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "run_balanced.py": "ffa38355baa105d7e611640a5ada89daceb3093ddb272e9305231f35b210aaf4",
+    "config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "balanced_partition.py": "3d07839e58573172be5f7eb6caf0161b5b8bc8a55d7e841cb1fb00318dbcdbd0"
+  },
+  "python": "3.13.12",
+  "packages": {
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "numpy": "2.5.3",
+    "flwr": "1.36.0"
+  },
+  "execution": "Sequential CPU clients; Flower aggregate; all 5 clients every round; global test set evaluated once",
+  "torch_threads": 1,
+  "deterministic_algorithms": true
+}

@@ -1,0 +1,31 @@
+{
+  "template": "/home/mark/FL-project/TISF.docx",
+  "template_sections": [
+    "壹、前言：",
+    "貳、研究設備及器材 :",
+    "參、研究過程及方法",
+    "伍、結果與討論:",
+    "陸、參考文獻:"
+  ],
+  "unique_settings": 9,
+  "training_runs": 54,
+  "summary_rows": 10,
+  "paired_rows_including_shared_setting": 30,
+  "checks": "Raw checksums, full partitions, paired identities and summary statistics verified",
+  "input_sha256": {
+    "TISF.docx": "abae6e8d4176105a0666ed903105722785f2e63bb7f00ad3533615c77ea3179e",
+    "results/studies/alpha_scale/summary.csv": "ab8a094884d2c9523d2da8449f5519d2cd1822c2e3f2f44a0146e21b6f2fc8d3",
+    "results/studies/alpha_scale/per_seed.csv": "58d124860a769d922947700a548bc5ab36bd82345c976939d6315c75d7f15259",
+    "results/studies/alpha_scale/study.json": "e5abe9ca5b419b430bf51e5c337d3dd9cb0ab8f8c80aa73038373a543ba55425"
+  },
+  "document_check": {
+    "pages_in_pdf": 13,
+    "embedded_figures": 6,
+    "blank_pages": 0,
+    "previewed_pages": [
+      1,
+      6,
+      7
+    ]
+  }
+}

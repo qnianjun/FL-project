@@ -1,0 +1,36 @@
+{
+  "seed": 43,
+  "alpha": 0.1,
+  "aggregation": "equal",
+  "enable_poison": false,
+  "poison_client": 0,
+  "poison_scale": 10,
+  "rounds": 10,
+  "num_clients": 5,
+  "batch_size": 32,
+  "local_epochs": 1,
+  "optimizer": "SGD",
+  "learning_rate": 0.01,
+  "client_sample_counts": [
+    1135,
+    27149,
+    17961,
+    10318,
+    3437
+  ],
+  "shuffle_seeds": [
+    1043,
+    1044,
+    1045,
+    1046,
+    1047
+  ],
+  "initial_parameters_sha256": "bb4edc3421a81a091c955b744bb61d6c72d9d25a261de24a04adc2ae5c7a3acb",
+  "partition_sha256": [
+    "8d7e15d1cbf7aaf8d0dc76035f4e9bf41a577a62df18c9a7ccdda333f323e48f",
+    "be0b19e6be5d8ddd6c56b1ac1cff4616d04e4dcb73a893141c42f8ab72d518fd",
+    "ed78a42f64c5c964d93aa600818c02c3c017326171761dc8f3c37466218f995a",
+    "84d2433dc1c4e34af79e7c5a61af37c0df88ae3cd5d8aef47dd1ff7dbbe9e07d",
+    "20de8d08705d5e9ff7a7048e2932575626da9131a0bae9b0d4d39e1bbb1efc39"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "runs": [
+    {
+      "seed": 42,
+      "condition": "clean",
+      "accuracy": 0.892,
+      "loss": 0.4030652875185013
+    },
+    {
+      "seed": 42,
+      "condition": "poisoned",
+      "accuracy": 0.2839,
+      "loss": 4.759283768081665
+    },
+    {
+      "seed": 43,
+      "condition": "clean",
+      "accuracy": 0.8886,
+      "loss": 0.38793335686922076
+    },
+    {
+      "seed": 43,
+      "condition": "poisoned",
+      "accuracy": 0.259,
+      "loss": 6.1282586563110355
+    },
+    {
+      "seed": 44,
+      "condition": "clean",
+      "accuracy": 0.8503,
+      "loss": 0.4747407714128494
+    },
+    {
+      "seed": 44,
+      "condition": "poisoned",
+      "accuracy": 0.298,
+      "loss": 4.99137721862793
+    }
+  ],
+  "clean_mean_accuracy": 0.8769666666666667,
+  "clean_sample_std": 0.023156496568637806,
+  "poisoned_mean_accuracy": 0.2803,
+  "poisoned_sample_std": 0.019747658088998796,
+  "paired_drops_percentage_points": [
+    60.81000000000001,
+    62.959999999999994,
+    55.230000000000004
+  ],
+  "mean_drop_percentage_points": 59.66666666666667,
+  "drop_sample_std_percentage_points": 3.9898162029513724
+}

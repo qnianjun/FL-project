@@ -1,5 +1,11 @@
 ## Experiment records
 
+閱讀程式可先看 [程式閱讀指南](docs/CODE_GUIDE.md)，依序了解 shell 入口、資料分配、訓練、驗證與報告。
+
+目前 A/B 已完成九個不同設定、54 次訓練，請先看 [資料總覽](results/INDEX.md)。下一階段是 [實驗 C：固定每端 12,000 張](docs/EXPERIMENT_C.md)。預覽：`bash run_experiment_c.sh`；資料分配檢查：`bash run_experiment_c.sh --check`；由你開始小範圍訓練：`bash run_experiment_c.sh --run`。A/B 原始結果與程式保留，新結果寫入獨立資料夾。
+
+實驗 D 比較樣本數加權與每端等權重的 FedAvg，使用 A 的 Alpha = 0.1 資料分配。已有的加權結果會沿用，只需執行新的等權重六次配對訓練：`bash run_weight_comparison.sh --run`。詳見 [實驗 D 說明](docs/EXPERIMENT_D.md)。
+
 The current [research design](docs/STUDY_PLAN.md) has two experiments: **A varies alpha** (0.01, 0.1, 1, 10, 100) with scale 10; **B varies scale** (1, 2, 5, 10, 20) with alpha 0.1. Each setting uses seeds 42, 43, and 44, matched clean/poisoned runs, and accuracy/loss damage measurements.
 
 Preview with `bash run_study.sh --reuse-existing`. Start training yourself with `bash run_study.sh --reuse-existing --run`. The two existing validated settings can be reused, leaving 42 new training runs. The default output is `results/studies/alpha_scale/`.

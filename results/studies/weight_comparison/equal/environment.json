@@ -1,0 +1,14 @@
+{
+  "created_utc": "2026-09-21T11:31:02.655456+00:00",
+  "base_commit": "1e3d53221e4bfaf068752b2acf10318a391b31d6",
+  "source_partition": "/home/mark/FL-project/results/experiments/2026-09-20_alpha_0.1_scale_10_three_seeds",
+  "python": "3.13.12",
+  "packages": {
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "numpy": "2.5.3",
+    "flwr": "1.36.0"
+  },
+  "torch_threads": 1,
+  "deterministic_algorithms": true
+}

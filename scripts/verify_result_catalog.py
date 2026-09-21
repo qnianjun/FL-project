@@ -1,15 +1,17 @@
 """Check preserved experiment files against the recorded catalog."""
+
 import csv
 import hashlib
 import math
 from pathlib import Path
 
-
 root = Path(__file__).resolve().parents[1]
 with (root / "results/catalog.csv").open(newline="") as handle:
     records = list(csv.DictReader(handle))
+# 路徑用來抓重複列；hashes 用來區分真正不同的檔案內容。
 paths = set()
 hashes = set()
+# 只驗證歷史目錄，不把新實驗 C 的 CSV 混進舊 catalog。
 for record in records:
     path = root / record["path"]
     assert path not in paths, f"Duplicate catalog path: {path}"
@@ -28,8 +30,11 @@ for record in records:
         assert 0 <= float(row["accuracy"]) <= 1, path
     assert rows[-1]["accuracy"] == record["final_accuracy"], path
     assert rows[-1]["loss"] == record["final_loss"], path
+# 反向檢查目錄內是否出現未列入 catalog 的 CSV。
 actual = set((root / "results/archive").rglob("*.csv")) | set(
     (root / "results/baselines").rglob("*.csv")
 )
 assert actual == paths, "CSV inventory differs from catalog"
-print(f"Verified {len(paths)} files, {len(hashes)} unique byte contents; duplicates are not repeats.")
+print(
+    f"Verified {len(paths)} files, {len(hashes)} unique byte contents; duplicates are not repeats."
+)

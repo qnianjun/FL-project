@@ -1,0 +1,4 @@
+seed,weighted_clean_accuracy,weighted_poisoned_accuracy,weighted_damage_pp,equal_clean_accuracy,equal_poisoned_accuracy,equal_damage_pp,equal_minus_weighted_damage_pp
+42,0.875,0.3118,56.31999999999999,0.8629,0.5527,31.020000000000003,-25.29999999999999
+43,0.8533,0.8537,-0.0400000000000067,0.8779,0.6148,26.31,26.350000000000005
+44,0.7577,0.2939,46.38,0.7903,0.346,44.43,-1.9500000000000028
