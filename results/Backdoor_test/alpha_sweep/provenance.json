@@ -1,0 +1,38 @@
+{
+  "alphas": [
+    0.01,
+    0.1,
+    1,
+    10,
+    100
+  ],
+  "settings": {
+    "alpha": 0.1,
+    "poison_ratio": 0.2,
+    "target_label": 0,
+    "trigger_size": 3,
+    "trigger_row": 25,
+    "trigger_column": 25,
+    "trigger_value": 1.0,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "num_clients": 5,
+    "attacker": 0,
+    "rounds": 10,
+    "local_epochs": 1,
+    "batch_size": 32,
+    "learning_rate": 0.01,
+    "optimizer": "SGD"
+  },
+  "pilot_path": "/home/mark/FL-project/results/Backdoor_test/mnist_alpha_0.1_ratio_0.2",
+  "pilot_checksums_sha256": "f105dcba3429b373e06167547c52dd0781cede309840dcb5161a6280688722ff",
+  "reuse_policy": "exact source, environment, data, partitions, metrics",
+  "paired_difference": "backdoor minus clean; percentage points",
+  "source_sha256": {
+    "run_backdoor_sweep.py": "6c26eb68ce0891b8872905439e93b3613f200e9613996c279e81c364fcd1427d",
+    "tests/test_backdoor_sweep.py": "235a3ad77805d219296326b8d1445547d80d7ab110d79e8015943cc5d7abf373"
+  }
+}

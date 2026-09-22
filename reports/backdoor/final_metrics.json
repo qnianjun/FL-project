@@ -1,0 +1,511 @@
+{
+  "per_seed": [
+    {
+      "alpha": 0.01,
+      "seed": 42,
+      "clean": {
+        "clean_accuracy_percent": 87.83999999999999,
+        "asr_percent": 1.3747228381374723,
+        "clean_loss": 0.43100618171691896
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 87.29,
+        "asr_percent": 88.2039911308204,
+        "clean_loss": 0.45095747327804564
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.549999999999983,
+        "asr_percent": 86.82926829268293,
+        "clean_loss": 0.019951291561126683
+      }
+    },
+    {
+      "alpha": 0.01,
+      "seed": 43,
+      "clean": {
+        "clean_accuracy_percent": 85.76,
+        "asr_percent": 0.6984478935698448,
+        "clean_loss": 0.47056630177497866
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 85.77,
+        "asr_percent": 35.78713968957871,
+        "clean_loss": 0.4756078503608704
+      },
+      "difference": {
+        "clean_accuracy_percent": 0.009999999999990905,
+        "asr_percent": 35.08869179600887,
+        "clean_loss": 0.005041548585891731
+      }
+    },
+    {
+      "alpha": 0.01,
+      "seed": 44,
+      "clean": {
+        "clean_accuracy_percent": 83.09,
+        "asr_percent": 0.7760532150776054,
+        "clean_loss": 0.4926730460882187
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 82.88,
+        "asr_percent": 79.45676274944567,
+        "clean_loss": 0.505022594165802
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.21000000000000796,
+        "asr_percent": 78.68070953436806,
+        "clean_loss": 0.012349548077583261
+      }
+    },
+    {
+      "alpha": 0.1,
+      "seed": 42,
+      "clean": {
+        "clean_accuracy_percent": 89.2,
+        "asr_percent": 0.8093126385809313,
+        "clean_loss": 0.4030652875185013
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 89.07000000000001,
+        "asr_percent": 53.78048780487805,
+        "clean_loss": 0.41160152792930604
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.12999999999999545,
+        "asr_percent": 52.971175166297115,
+        "clean_loss": 0.008536240410804752
+      }
+    },
+    {
+      "alpha": 0.1,
+      "seed": 43,
+      "clean": {
+        "clean_accuracy_percent": 88.86,
+        "asr_percent": 0.9977827050997782,
+        "clean_loss": 0.38793335686922076
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 88.79,
+        "asr_percent": 67.039911308204,
+        "clean_loss": 0.3958573363542557
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.06999999999999318,
+        "asr_percent": 66.04212860310422,
+        "clean_loss": 0.007923979485034927
+      }
+    },
+    {
+      "alpha": 0.1,
+      "seed": 44,
+      "clean": {
+        "clean_accuracy_percent": 85.03,
+        "asr_percent": 0.5875831485587583,
+        "clean_loss": 0.4747407714128494
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 84.97,
+        "asr_percent": 68.29268292682927,
+        "clean_loss": 0.48225101840496065
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.060000000000002274,
+        "asr_percent": 67.70509977827051,
+        "clean_loss": 0.007510246992111225
+      }
+    },
+    {
+      "alpha": 1,
+      "seed": 42,
+      "clean": {
+        "clean_accuracy_percent": 90.74,
+        "asr_percent": 0.8093126385809313,
+        "clean_loss": 0.3316851038753986
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 90.59,
+        "asr_percent": 56.21951219512196,
+        "clean_loss": 0.3381350136935711
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.14999999999999147,
+        "asr_percent": 55.41019955654102,
+        "clean_loss": 0.00644990981817245
+      }
+    },
+    {
+      "alpha": 1,
+      "seed": 43,
+      "clean": {
+        "clean_accuracy_percent": 90.74,
+        "asr_percent": 0.853658536585366,
+        "clean_loss": 0.32991895990371706
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 90.79,
+        "asr_percent": 59.11308203991131,
+        "clean_loss": 0.33669833319187165
+      },
+      "difference": {
+        "clean_accuracy_percent": 0.05000000000001137,
+        "asr_percent": 58.25942350332595,
+        "clean_loss": 0.006779373288154589
+      }
+    },
+    {
+      "alpha": 1,
+      "seed": 44,
+      "clean": {
+        "clean_accuracy_percent": 90.7,
+        "asr_percent": 0.853658536585366,
+        "clean_loss": 0.3407019311070442
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 90.66,
+        "asr_percent": 66.82926829268293,
+        "clean_loss": 0.3491921116292477
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.04000000000000625,
+        "asr_percent": 65.97560975609755,
+        "clean_loss": 0.008490180522203461
+      }
+    },
+    {
+      "alpha": 10,
+      "seed": 42,
+      "clean": {
+        "clean_accuracy_percent": 90.86999999999999,
+        "asr_percent": 0.7760532150776054,
+        "clean_loss": 0.3247306404054165
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 90.78,
+        "asr_percent": 62.62749445676275,
+        "clean_loss": 0.3314823798060417
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.0899999999999892,
+        "asr_percent": 61.851441241685144,
+        "clean_loss": 0.006751739400625234
+      }
+    },
+    {
+      "alpha": 10,
+      "seed": 43,
+      "clean": {
+        "clean_accuracy_percent": 90.79,
+        "asr_percent": 0.853658536585366,
+        "clean_loss": 0.32337153720259665
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 90.82000000000001,
+        "asr_percent": 58.470066518847005,
+        "clean_loss": 0.33016119928956034
+      },
+      "difference": {
+        "clean_accuracy_percent": 0.030000000000001137,
+        "asr_percent": 57.61640798226164,
+        "clean_loss": 0.006789662086963688
+      }
+    },
+    {
+      "alpha": 10,
+      "seed": 44,
+      "clean": {
+        "clean_accuracy_percent": 91.0,
+        "asr_percent": 0.8425720620842573,
+        "clean_loss": 0.32580233734846115
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 90.97,
+        "asr_percent": 60.97560975609756,
+        "clean_loss": 0.3319820131719112
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.030000000000001137,
+        "asr_percent": 60.133037694013304,
+        "clean_loss": 0.0061796758234500815
+      }
+    },
+    {
+      "alpha": 100,
+      "seed": 42,
+      "clean": {
+        "clean_accuracy_percent": 91.0,
+        "asr_percent": 0.7427937915742794,
+        "clean_loss": 0.3230814689040184
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 90.88000000000001,
+        "asr_percent": 62.46119733924612,
+        "clean_loss": 0.3292776376605034
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.11999999999999034,
+        "asr_percent": 61.71840354767184,
+        "clean_loss": 0.006196168756484988
+      }
+    },
+    {
+      "alpha": 100,
+      "seed": 43,
+      "clean": {
+        "clean_accuracy_percent": 90.88000000000001,
+        "asr_percent": 0.8314855875831485,
+        "clean_loss": 0.3206568488538265
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 90.89,
+        "asr_percent": 61.36363636363637,
+        "clean_loss": 0.32723996671438216
+      },
+      "difference": {
+        "clean_accuracy_percent": 0.009999999999990905,
+        "asr_percent": 60.53215077605322,
+        "clean_loss": 0.006583117860555654
+      }
+    },
+    {
+      "alpha": 100,
+      "seed": 44,
+      "clean": {
+        "clean_accuracy_percent": 91.08000000000001,
+        "asr_percent": 0.753880266075388,
+        "clean_loss": 0.32386953857541084
+      },
+      "backdoor": {
+        "clean_accuracy_percent": 91.03999999999999,
+        "asr_percent": 61.75166297117517,
+        "clean_loss": 0.3301678520917892
+      },
+      "difference": {
+        "clean_accuracy_percent": -0.040000000000020464,
+        "asr_percent": 60.99778270509978,
+        "clean_loss": 0.006298313516378384
+      }
+    }
+  ],
+  "summary": {
+    "0.01": {
+      "clean": {
+        "clean_accuracy_percent": [
+          85.56333333333333,
+          2.381099185950325
+        ],
+        "asr_percent": [
+          0.9497413155949742,
+          0.37008460837825397
+        ],
+        "clean_loss": [
+          0.4647485098600388,
+          0.031242368146816666
+        ]
+      },
+      "backdoor": {
+        "clean_accuracy_percent": [
+          85.31333333333333,
+          2.2401860041820982
+        ],
+        "asr_percent": [
+          67.8159645232816,
+          28.08046859046335
+        ],
+        "clean_loss": [
+          0.47719597260157265,
+          0.02706752525334532
+        ]
+      },
+      "difference": {
+        "clean_accuracy_percent": [
+          -0.25,
+          0.2821347195933039
+        ],
+        "asr_percent": [
+          66.86622320768662,
+          27.820107466085606
+        ],
+        "clean_loss": [
+          0.012447462741533891,
+          0.007455353737949288
+        ]
+      }
+    },
+    "0.1": {
+      "clean": {
+        "clean_accuracy_percent": [
+          87.69666666666667,
+          2.315649656863778
+        ],
+        "asr_percent": [
+          0.7982261640798226,
+          0.2053243811247465
+        ],
+        "clean_loss": [
+          0.4219131386001905,
+          0.04637146668734447
+        ]
+      },
+      "backdoor": {
+        "clean_accuracy_percent": [
+          87.61,
+          2.2905894437895284
+        ],
+        "asr_percent": [
+          63.03769401330377,
+          8.041409035181276
+        ],
+        "clean_loss": [
+          0.42990329422950746,
+          0.04601285757100907
+        ]
+      },
+      "difference": {
+        "clean_accuracy_percent": [
+          -0.08666666666666363,
+          0.03785938897199992
+        ],
+        "asr_percent": [
+          62.23946784922395,
+          8.069529430187039
+        ],
+        "clean_loss": [
+          0.007990155629316967,
+          0.0005161880329440387
+        ]
+      }
+    },
+    "1": {
+      "clean": {
+        "clean_accuracy_percent": [
+          90.72666666666666,
+          0.023094010767580435
+        ],
+        "asr_percent": [
+          0.8388765705838878,
+          0.025603116150316043
+        ],
+        "clean_loss": [
+          0.3341019982953866,
+          0.005783524096169445
+        ]
+      },
+      "backdoor": {
+        "clean_accuracy_percent": [
+          90.68,
+          0.10148891565092441
+        ],
+        "asr_percent": [
+          60.72062084257207,
+          5.484511542879458
+        ],
+        "clean_loss": [
+          0.3413418195048968,
+          0.006836397263487906
+        ]
+      },
+      "difference": {
+        "clean_accuracy_percent": [
+          -0.04666666666666212,
+          0.10016652800877901
+        ],
+        "asr_percent": [
+          59.881744271988175,
+          5.466343995628879
+        ],
+        "clean_loss": [
+          0.007239821209510167,
+          0.0010953014893819433
+        ]
+      }
+    },
+    "10": {
+      "clean": {
+        "clean_accuracy_percent": [
+          90.88666666666667,
+          0.10598742063722888
+        ],
+        "asr_percent": [
+          0.8240946045824096,
+          0.041972715046565225
+        ],
+        "clean_loss": [
+          0.3246348383188248,
+          0.0012182285775379812
+        ]
+      },
+      "backdoor": {
+        "clean_accuracy_percent": [
+          90.85666666666667,
+          0.1001665280087757
+        ],
+        "asr_percent": [
+          60.6910569105691,
+          2.0932700509404754
+        ],
+        "clean_loss": [
+          0.3312085307558378,
+          0.0009407899740450261
+        ]
+      },
+      "difference": {
+        "clean_accuracy_percent": [
+          -0.0299999999999964,
+          0.05999999999999517
+        ],
+        "asr_percent": [
+          59.866962305986696,
+          2.1300173147631796
+        ],
+        "clean_loss": [
+          0.006573692437013001,
+          0.0003417548117546768
+        ]
+      }
+    },
+    "100": {
+      "clean": {
+        "clean_accuracy_percent": [
+          90.98666666666668,
+          0.10066445913694401
+        ],
+        "asr_percent": [
+          0.7760532150776053,
+          0.04832482199047306
+        ],
+        "clean_loss": [
+          0.32253595211108527,
+          0.001674376074937308
+        ]
+      },
+      "backdoor": {
+        "clean_accuracy_percent": [
+          90.93666666666667,
+          0.08962886439831723
+        ],
+        "asr_percent": [
+          61.858832224685884,
+          0.5565734097752881
+        ],
+        "clean_loss": [
+          0.32889515215555826,
+          0.0015009495550911702
+        ]
+      },
+      "difference": {
+        "clean_accuracy_percent": [
+          -0.05000000000000663,
+          0.06557438524300913
+        ],
+        "asr_percent": [
+          61.08277900960828,
+          0.597676491405083
+        ],
+        "clean_loss": [
+          0.006359200044473008,
+          0.00020053124261031231
+        ]
+      }
+    }
+  }
+}

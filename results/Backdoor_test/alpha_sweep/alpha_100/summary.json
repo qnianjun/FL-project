@@ -1,0 +1,119 @@
+{
+  "final_round_per_seed": [
+    {
+      "seed": 42,
+      "condition": "clean",
+      "round": 10,
+      "clean_loss": 0.3230814689040184,
+      "clean_accuracy_percent": 91.0,
+      "asr_percent": 0.7427937915742794
+    },
+    {
+      "seed": 42,
+      "condition": "backdoor",
+      "round": 10,
+      "clean_loss": 0.3292776376605034,
+      "clean_accuracy_percent": 90.88000000000001,
+      "asr_percent": 62.46119733924612
+    },
+    {
+      "seed": 43,
+      "condition": "clean",
+      "round": 10,
+      "clean_loss": 0.3206568488538265,
+      "clean_accuracy_percent": 90.88000000000001,
+      "asr_percent": 0.8314855875831485
+    },
+    {
+      "seed": 43,
+      "condition": "backdoor",
+      "round": 10,
+      "clean_loss": 0.32723996671438216,
+      "clean_accuracy_percent": 90.89,
+      "asr_percent": 61.36363636363637
+    },
+    {
+      "seed": 44,
+      "condition": "clean",
+      "round": 10,
+      "clean_loss": 0.32386953857541084,
+      "clean_accuracy_percent": 91.08000000000001,
+      "asr_percent": 0.753880266075388
+    },
+    {
+      "seed": 44,
+      "condition": "backdoor",
+      "round": 10,
+      "clean_loss": 0.3301678520917892,
+      "clean_accuracy_percent": 91.03999999999999,
+      "asr_percent": 61.75166297117517
+    }
+  ],
+  "conditions": {
+    "clean": {
+      "clean_loss": {
+        "mean": 0.32253595211108527,
+        "sample_std": 0.001674376074937308
+      },
+      "clean_accuracy_percent": {
+        "mean": 90.98666666666668,
+        "sample_std": 0.10066445913694401
+      },
+      "asr_percent": {
+        "mean": 0.7760532150776053,
+        "sample_std": 0.04832482199047306
+      }
+    },
+    "backdoor": {
+      "clean_loss": {
+        "mean": 0.32889515215555826,
+        "sample_std": 0.0015009495550911702
+      },
+      "clean_accuracy_percent": {
+        "mean": 90.93666666666667,
+        "sample_std": 0.08962886439831723
+      },
+      "asr_percent": {
+        "mean": 61.858832224685884,
+        "sample_std": 0.5565734097752881
+      }
+    }
+  },
+  "paired_backdoor_minus_clean": {
+    "units": "percentage points for accuracy/ASR; loss units for loss",
+    "per_seed": [
+      {
+        "seed": 42,
+        "clean_loss": 0.006196168756484988,
+        "clean_accuracy_percent": -0.11999999999999034,
+        "asr_percent": 61.71840354767184
+      },
+      {
+        "seed": 43,
+        "clean_loss": 0.006583117860555654,
+        "clean_accuracy_percent": 0.009999999999990905,
+        "asr_percent": 60.53215077605322
+      },
+      {
+        "seed": 44,
+        "clean_loss": 0.006298313516378384,
+        "clean_accuracy_percent": -0.040000000000020464,
+        "asr_percent": 60.99778270509978
+      }
+    ],
+    "statistics": {
+      "clean_loss": {
+        "mean": 0.006359200044473008,
+        "sample_std": 0.00020053124261031231
+      },
+      "clean_accuracy_percent": {
+        "mean": -0.05000000000000663,
+        "sample_std": 0.06557438524300913
+      },
+      "asr_percent": {
+        "mean": 61.08277900960828,
+        "sample_std": 0.597676491405083
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "config.json": "522d6284f610f478d18ec75aa9b5ed483ccdfdb480358fd48add884db61ecd10",
+  "seed_42/backdoor/config.json": "803ef8beae1015d12c28d5eec80374119694c3f42c305bc7644fa6afbabc45f9",
+  "seed_42/backdoor/partitions.npz": "9db467dee8460a75436127cd86f7d7e4079c832cf7df07d2f2bfa201732bcc7e",
+  "seed_42/backdoor/results.csv": "5a96114da63687916786835acd5a0676175762283d81791f08a2bc8f5432f4d3",
+  "seed_42/clean/config.json": "d0b685d690ce8f3a24d60ec618b28bed9eb94c810c8ff130cd4f853ee0e12459",
+  "seed_42/clean/partitions.npz": "9db467dee8460a75436127cd86f7d7e4079c832cf7df07d2f2bfa201732bcc7e",
+  "seed_42/clean/results.csv": "ca6258b30a384720f3412e65affcb06ac79cebefc7c20c848e7e149d713893e7",
+  "seed_43/backdoor/config.json": "c1e56688b1d3e313ab19b107168781fc0fc5444628d559b04af8596d99112930",
+  "seed_43/backdoor/partitions.npz": "5c26391ba9bb600f54c10ce881cd857139751a162aa43f9e44f3e87e660423c2",
+  "seed_43/backdoor/results.csv": "47e3457c965d6435fa302fb2643011207c64854c21b1db2505e90a7362eb0041",
+  "seed_43/clean/config.json": "80c1eb0d8ff8c0e3d42b8af1ee9f094e1cbfb1fabf4f9d806f4344913602f501",
+  "seed_43/clean/partitions.npz": "5c26391ba9bb600f54c10ce881cd857139751a162aa43f9e44f3e87e660423c2",
+  "seed_43/clean/results.csv": "d13d57768658fe17b8d5c7f047f77695e802e1acb04b206b41df55ccf6b8f807",
+  "seed_44/backdoor/config.json": "165613259ee32c8cf6946aba00caef5949daea1c2a5200b6a5fed05b5fa35fe0",
+  "seed_44/backdoor/partitions.npz": "1091dbbd8319073a3b1b9330a8bf5911db2d694793f2a314786cbdf69f5c0f5a",
+  "seed_44/backdoor/results.csv": "e416082f2d3928e08b98b7700c3c9c89340297baf9e88f92b33b12952a2d46ef",
+  "seed_44/clean/config.json": "ea52b562c8ed35e5e06f2b455dd6a3d16c5a5069ebee361779ca20d660777cb2",
+  "seed_44/clean/partitions.npz": "1091dbbd8319073a3b1b9330a8bf5911db2d694793f2a314786cbdf69f5c0f5a",
+  "seed_44/clean/results.csv": "89da8a0c38af72fd1dae860a53d8ed7f83694051112ae121b121ee29e899bf29",
+  "summary.json": "2c8af1b4e807d70558102a2ba44a68e9c974486da91ee224ec58df894961aca5"
+}

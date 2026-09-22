@@ -1,0 +1,111 @@
+{
+  "alpha": 10,
+  "poison_ratio": 0.2,
+  "target_label": 0,
+  "trigger_size": 3,
+  "trigger_row": 25,
+  "trigger_column": 25,
+  "trigger_value": 1.0,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "num_clients": 5,
+  "attacker": 0,
+  "rounds": 10,
+  "local_epochs": 1,
+  "batch_size": 32,
+  "learning_rate": 0.01,
+  "optimizer": "SGD",
+  "initial_parameters_sha256": "c934eea70eb6231e5f12e4f6d2e96616a8c560872b1acbb97a90794b08739fe5",
+  "partition_sha256": [
+    "95dca25c8ba82caaedb197c470e84fafbe811d66590d98dadeb7d631df3ae09b",
+    "f42e210253f7f1066824ef2396130266616dba55811d869c9b43503d3e9d8fdd",
+    "388167f463dcbbf13f493dc7dc478c23b16a9ccd6283eb37048c80b1bf181b1c",
+    "918f2a970e7dd43416aaae08c0430dd8be68e6fc5ddd14c45ad31f9def52a6be",
+    "859f18b98fe0f4fbf6c7c99a2e5c76fbb0412827db8013ee91d864268f1291c3"
+  ],
+  "shuffle_seeds": [
+    1042,
+    1043,
+    1044,
+    1045,
+    1046
+  ],
+  "client_sample_counts": [
+    12000,
+    12000,
+    12000,
+    12000,
+    12000
+  ],
+  "seed": 42,
+  "condition": "clean",
+  "poison_selection_seed": 2042,
+  "poisoned_local_positions": [],
+  "client_label_counts": [
+    [
+      1097,
+      1206,
+      825,
+      1673,
+      1174,
+      1178,
+      820,
+      1498,
+      1284,
+      1245
+    ],
+    [
+      1535,
+      1124,
+      1478,
+      956,
+      797,
+      1298,
+      741,
+      905,
+      1464,
+      1702
+    ],
+    [
+      770,
+      1481,
+      1044,
+      1521,
+      1090,
+      813,
+      1530,
+      1166,
+      1236,
+      1349
+    ],
+    [
+      1295,
+      1315,
+      1326,
+      1112,
+      1247,
+      1021,
+      1678,
+      1490,
+      770,
+      746
+    ],
+    [
+      1226,
+      1616,
+      1285,
+      869,
+      1534,
+      1111,
+      1149,
+      1206,
+      1097,
+      907
+    ]
+  ],
+  "asr_sample_count": 9020,
+  "validation": "identity, transforms, data hashes passed"
+}

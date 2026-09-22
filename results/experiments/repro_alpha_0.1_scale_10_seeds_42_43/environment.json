@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-09-21T13:00:03.382941+00:00",
+  "base_commit": "02ac63411c28a858b42c78e992ebb8ab73ccc5a9",
+  "working_tree_status": "?? results/experiments/repro_alpha_0.1_scale_10_seeds_42_43/\n",
+  "source_sha256": {
+    "client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "run_matched.py": "57307c66a9469ce7ff4aab29c019ab6569e6b70e5cf4a1d7a6b777d6db3f7661"
+  },
+  "python": "3.13.12",
+  "packages": {
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "numpy": "2.5.3",
+    "flwr": "1.36.0"
+  },
+  "execution": "Sequential CPU clients; Flower aggregate; all 5 clients every round; global test set evaluated once",
+  "torch_threads": 1,
+  "deterministic_algorithms": true
+}

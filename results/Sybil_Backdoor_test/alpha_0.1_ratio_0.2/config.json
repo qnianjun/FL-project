@@ -1,0 +1,61 @@
+{
+  "original_partition_settings": {
+    "alpha": 0.1,
+    "poison_ratio": 0.2,
+    "target_label": 0,
+    "trigger_size": 3,
+    "trigger_row": 25,
+    "trigger_column": 25,
+    "trigger_value": 1.0,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "num_clients": 5,
+    "attacker": 0,
+    "rounds": 10,
+    "local_epochs": 1,
+    "batch_size": 32,
+    "learning_rate": 0.01,
+    "optimizer": "SGD"
+  },
+  "sybil_counts": [
+    1,
+    2,
+    3
+  ],
+  "logical_to_original_partition": {
+    "1": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      0
+    ],
+    "3": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      0,
+      0
+    ]
+  },
+  "aggregation": "sample-weighted FedAvg; 12000 per identity",
+  "attacker_shuffle": "all attacker identities use seed + 1000",
+  "honest_shuffle": "seed + 1000 + original partition ID",
+  "poison_selection": "same 2400 positions per Sybil; seed + 2000",
+  "clean_control": "same duplication without poisoning",
+  "asr_denominator": "9020 triggered images; original label != 0",
+  "paired_difference": "backdoor minus clean; percentage points"
+}

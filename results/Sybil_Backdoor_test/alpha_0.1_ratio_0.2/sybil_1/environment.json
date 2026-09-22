@@ -1,0 +1,22 @@
+{
+  "created_utc": "2026-09-22T04:08:25.756794+00:00",
+  "base_commit": "02ac63411c28a858b42c78e992ebb8ab73ccc5a9",
+  "working_tree_status": " M run_backdoor.py\n M tests/test_backdoor.py\n?? results/Backdoor_test/\n?? results/experiments/repro_alpha_0.1_scale_10_seeds_42_43/\n",
+  "python": "3.13.12",
+  "packages": {
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "numpy": "2.5.3",
+    "flwr": "1.36.0"
+  },
+  "torch_threads": 1,
+  "deterministic_algorithms": true,
+  "source_sha256": {
+    "balanced_partition.py": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+    "client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "run_backdoor.py": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+    "run_balanced.py": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+    "tests/test_backdoor.py": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d"
+  }
+}
