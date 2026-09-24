@@ -1,0 +1,13 @@
+{
+  "path": "/home/mark/FL-project/results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_43/backdoor",
+  "sha256": {
+    "config.json": "4774e4d004327fda193378199d8444520559ec061042a93c74589fc04152b6a6",
+    "partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results.csv": "77fedb3884f0a48814f737c6e6f125e9797dd398fe61bc0cb76b595fabf82a9b"
+  },
+  "metrics": {
+    "clean_loss": 0.3958573363542557,
+    "clean_accuracy_percent": 88.79,
+    "asr_percent": 67.039911308204
+  }
+}

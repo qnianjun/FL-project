@@ -1,0 +1,13 @@
+setting,method,group,requested_seeds,requested_rounds,expected_pairs_total,observed_pairs,cosine_mean,cosine_sample_sd,cosine_min,cosine_max,status
+clean,fedavg,honest_honest,42;43;44,1-10,300,0,,,,,missing_update_vectors
+clean,fedavg,attacker_honest,42;43;44,1-10,0,0,,,,,not_applicable
+clean,fedavg,sybil_sybil,42;43;44,1-10,0,0,,,,,not_applicable
+backdoor,fedavg,honest_honest,42;43;44,1-10,180,0,,,,,missing_update_vectors
+backdoor,fedavg,attacker_honest,42;43;44,1-10,120,0,,,,,missing_update_vectors
+backdoor,fedavg,sybil_sybil,42;43;44,1-10,0,0,,,,,not_applicable
+sybil_backdoor,fedavg,honest_honest,42;43;44,1-10,180,0,,,,,missing_update_vectors
+sybil_backdoor,fedavg,attacker_honest,42;43;44,1-10,360,0,,,,,missing_update_vectors
+sybil_backdoor,fedavg,sybil_sybil,42;43;44,1-10,90,0,,,,,missing_update_vectors
+model_poisoning,fedavg,honest_honest,42;43;44,1-10,180,0,,,,,missing_update_vectors
+model_poisoning,fedavg,attacker_honest,42;43;44,1-10,120,0,,,,,missing_update_vectors
+model_poisoning,fedavg,sybil_sybil,42;43;44,1-10,0,0,,,,,not_applicable

@@ -1,0 +1,63 @@
+{
+  "alpha": 0.1,
+  "poison_ratio": 0,
+  "target_label": 0,
+  "trigger_size": 3,
+  "trigger_row": 25,
+  "trigger_column": 25,
+  "trigger_value": 1.0,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "num_clients": 5,
+  "attacker": 0,
+  "rounds": 10,
+  "local_epochs": 1,
+  "batch_size": 32,
+  "learning_rate": 0.01,
+  "optimizer": "SGD",
+  "benchmark": "model_poisoning",
+  "method": "coordinate_median",
+  "defense_definition": "global + unweighted coordinate-wise median of submitted deltas; each logical identity is one vote; no clipping or sample weighting",
+  "seed": 43,
+  "condition": "clean",
+  "original_num_partitions": 5,
+  "logical_to_original_partition": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "sybil_count": 1,
+  "unique_attacker_sample_count": 12000,
+  "fedavg_coalition_weight": 0.2,
+  "poison_scale": 10,
+  "poisoned_local_positions": [],
+  "poison_selection_seed": 2043,
+  "asr_sample_count": null,
+  "initial_parameters_sha256": "bb4edc3421a81a091c955b744bb61d6c72d9d25a261de24a04adc2ae5c7a3acb",
+  "partition_sha256": [
+    "e16b19a783bb6f41d2c89d48c8bfe5da291908e2e5e1e76d794147148e9b805f",
+    "5e6ddabb4e1869a1d9b0915f3961e7b4de824a28f6bb128c29ef8e7b28860d71",
+    "d63619bbe7bf36b83d7f1d4718b07e6eafdc4eded4d88250dcc678231bd05877",
+    "754d6bb0e9a7bd7e9a240c97bdf6359c03e1af9c6bec92b30edc9c2db72d413e",
+    "6dd4aaf236d074ac9853eedeec0c31c7c7a8099cfc9c76ee3406aa9a2021aa98"
+  ],
+  "shuffle_seeds": [
+    1043,
+    1044,
+    1045,
+    1046,
+    1047
+  ],
+  "client_sample_counts": [
+    12000,
+    12000,
+    12000,
+    12000,
+    12000
+  ]
+}

@@ -1,0 +1,1565 @@
+{
+  "created_utc": "2026-09-24T01:11:09.583188+00:00",
+  "status": "insufficient_data_stopped_before_training",
+  "training_run": false,
+  "raw_results_modified": false,
+  "threshold_selected": false,
+  "scope": {
+    "alpha": 0.1,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "rounds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "original_partition_samples": 12000,
+    "poison_ratio": 0.2,
+    "target_label": 0,
+    "trigger": "white 3x3 bottom-right",
+    "sybil_count": 3,
+    "unique_attacker_samples": 12000,
+    "model_poison_scale": 10
+  },
+  "settings": [
+    {
+      "setting": "clean",
+      "clients": 5,
+      "attacker_ids": [],
+      "source": "results/studies/equal_samples/alpha_0.1_scale_10",
+      "condition": "clean",
+      "norms_available": true
+    },
+    {
+      "setting": "backdoor",
+      "clients": 5,
+      "attacker_ids": [
+        0
+      ],
+      "source": "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2",
+      "condition": "backdoor",
+      "norms_available": false
+    },
+    {
+      "setting": "sybil_backdoor",
+      "clients": 7,
+      "attacker_ids": [
+        0,
+        5,
+        6
+      ],
+      "source": "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2",
+      "condition": "backdoor",
+      "norms_available": false
+    },
+    {
+      "setting": "model_poisoning",
+      "clients": 5,
+      "attacker_ids": [
+        0
+      ],
+      "source": "results/studies/equal_samples/alpha_0.1_scale_10",
+      "condition": "poisoned",
+      "norms_available": true
+    }
+  ],
+  "archives": [
+    {
+      "name": "defense",
+      "path": "results/defense_baselines/pilot_alpha_0.1",
+      "manifest_sha256": "446338fef2687551df4908667c99a91a78736548b8498bae77d4fc0e286f4ceb",
+      "verified_entries": 290,
+      "csv_schemas": {
+        "per_seed.csv": [
+          "benchmark",
+          "method",
+          "seed",
+          "clean_accuracy_percent",
+          "attack_clean_accuracy_percent",
+          "clean_loss",
+          "attack_clean_loss",
+          "accuracy_damage_pp",
+          "loss_damage",
+          "clean_asr_percent",
+          "attack_asr_percent",
+          "paired_asr_increase_pp",
+          "defense_clean_accuracy_degradation_pp",
+          "defense_clean_loss_increase"
+        ],
+        "summary.csv": [
+          "benchmark",
+          "method",
+          "n_seeds",
+          "round",
+          "clean_accuracy_percent_mean",
+          "clean_accuracy_percent_sample_sd",
+          "attack_clean_accuracy_percent_mean",
+          "attack_clean_accuracy_percent_sample_sd",
+          "clean_loss_mean",
+          "clean_loss_sample_sd",
+          "attack_clean_loss_mean",
+          "attack_clean_loss_sample_sd",
+          "accuracy_damage_pp_mean",
+          "accuracy_damage_pp_sample_sd",
+          "loss_damage_mean",
+          "loss_damage_sample_sd",
+          "clean_asr_percent_mean",
+          "clean_asr_percent_sample_sd",
+          "attack_asr_percent_mean",
+          "attack_asr_percent_sample_sd",
+          "paired_asr_increase_pp_mean",
+          "paired_asr_increase_pp_sample_sd",
+          "defense_clean_accuracy_degradation_pp_mean",
+          "defense_clean_accuracy_degradation_pp_sample_sd",
+          "defense_clean_loss_increase_mean",
+          "defense_clean_loss_increase_sample_sd"
+        ],
+        "sybil_backdoor/fedavg/seed_44/clean/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/fedavg/seed_44/attack/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/fedavg/seed_42/clean/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/fedavg/seed_42/attack/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/fedavg/seed_43/clean/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/fedavg/seed_43/attack/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/coordinate_median/seed_44/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/coordinate_median/seed_44/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/coordinate_median/seed_44/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/coordinate_median/seed_44/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/coordinate_median/seed_42/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/coordinate_median/seed_42/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/coordinate_median/seed_42/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/coordinate_median/seed_42/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/coordinate_median/seed_43/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/coordinate_median/seed_43/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/coordinate_median/seed_43/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/coordinate_median/seed_43/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_44/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_44/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_44/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_44/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_42/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_42/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_42/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_42/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_43/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_43/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_43/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_backdoor/clip_fedavg/seed_43/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/fedavg/seed_44/clean/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/fedavg/seed_44/attack/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/fedavg/seed_42/clean/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/fedavg/seed_42/attack/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/fedavg/seed_43/clean/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/fedavg/seed_43/attack/original/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/coordinate_median/seed_44/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/coordinate_median/seed_44/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/coordinate_median/seed_44/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/coordinate_median/seed_44/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/coordinate_median/seed_42/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/coordinate_median/seed_42/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/coordinate_median/seed_42/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/coordinate_median/seed_42/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/coordinate_median/seed_43/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/coordinate_median/seed_43/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/coordinate_median/seed_43/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/coordinate_median/seed_43/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/clip_fedavg/seed_44/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/clip_fedavg/seed_44/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/clip_fedavg/seed_44/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/clip_fedavg/seed_44/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/clip_fedavg/seed_42/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/clip_fedavg/seed_42/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/clip_fedavg/seed_42/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/clip_fedavg/seed_42/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/clip_fedavg/seed_43/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/clip_fedavg/seed_43/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "backdoor/clip_fedavg/seed_43/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "backdoor/clip_fedavg/seed_43/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/fedavg/seed_44/clean/original/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "model_poisoning/fedavg/seed_44/clean/original/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "model_poisoning/fedavg/seed_44/attack/original/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "model_poisoning/fedavg/seed_44/attack/original/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "model_poisoning/fedavg/seed_42/clean/original/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "model_poisoning/fedavg/seed_42/clean/original/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "model_poisoning/fedavg/seed_42/attack/original/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "model_poisoning/fedavg/seed_42/attack/original/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "model_poisoning/fedavg/seed_43/clean/original/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "model_poisoning/fedavg/seed_43/clean/original/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "model_poisoning/fedavg/seed_43/attack/original/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "model_poisoning/fedavg/seed_43/attack/original/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "model_poisoning/coordinate_median/seed_44/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/coordinate_median/seed_44/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/coordinate_median/seed_44/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/coordinate_median/seed_44/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/coordinate_median/seed_42/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/coordinate_median/seed_42/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/coordinate_median/seed_42/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/coordinate_median/seed_42/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/coordinate_median/seed_43/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/coordinate_median/seed_43/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/coordinate_median/seed_43/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/coordinate_median/seed_43/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/clip_fedavg/seed_44/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/clip_fedavg/seed_44/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/clip_fedavg/seed_44/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/clip_fedavg/seed_44/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/clip_fedavg/seed_42/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/clip_fedavg/seed_42/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/clip_fedavg/seed_42/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/clip_fedavg/seed_42/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/clip_fedavg/seed_43/attack/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/clip_fedavg/seed_43/attack/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ],
+        "model_poisoning/clip_fedavg/seed_43/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "model_poisoning/clip_fedavg/seed_43/clean/aggregation.csv": [
+          "round",
+          "logical_id",
+          "submitted_update_l2",
+          "threshold",
+          "clip_factor",
+          "clipped_update_l2",
+          "reconstructed_update_l2"
+        ]
+      }
+    },
+    {
+      "name": "backdoor",
+      "path": "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2",
+      "manifest_sha256": "f105dcba3429b373e06167547c52dd0781cede309840dcb5161a6280688722ff",
+      "verified_entries": 28,
+      "csv_schemas": {
+        "seed_44/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "seed_44/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "seed_42/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "seed_42/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "seed_43/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "seed_43/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ]
+      }
+    },
+    {
+      "name": "sybil_backdoor",
+      "path": "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2",
+      "manifest_sha256": "f1437babd719405110c285a77f6abe88a2ffc10f89a52b945edc6408cd24c6bd",
+      "verified_entries": 87,
+      "csv_schemas": {
+        "per_seed.csv": [
+          "alpha",
+          "seed",
+          "round",
+          "clean_accuracy_percent",
+          "backdoor_clean_accuracy_percent",
+          "clean_asr_percent",
+          "backdoor_asr_percent",
+          "paired_clean_accuracy_change_pp",
+          "paired_asr_increase_pp",
+          "sybil_count",
+          "logical_identity_count",
+          "attacker_coalition_weight",
+          "clean_loss",
+          "backdoor_clean_loss",
+          "paired_clean_loss_change"
+        ],
+        "summary.csv": [
+          "sybil_count",
+          "alpha",
+          "n_seeds",
+          "round",
+          "logical_identity_count",
+          "clean_accuracy_percent_mean",
+          "clean_accuracy_percent_sample_sd",
+          "backdoor_clean_accuracy_percent_mean",
+          "backdoor_clean_accuracy_percent_sample_sd",
+          "clean_asr_percent_mean",
+          "clean_asr_percent_sample_sd",
+          "backdoor_asr_percent_mean",
+          "backdoor_asr_percent_sample_sd",
+          "paired_clean_accuracy_change_pp_mean",
+          "paired_clean_accuracy_change_pp_sample_sd",
+          "paired_asr_increase_pp_mean",
+          "paired_asr_increase_pp_sample_sd",
+          "attacker_coalition_weight_mean",
+          "attacker_coalition_weight_sample_sd",
+          "clean_loss_mean",
+          "clean_loss_sample_sd",
+          "backdoor_clean_loss_mean",
+          "backdoor_clean_loss_sample_sd",
+          "paired_clean_loss_change_mean",
+          "paired_clean_loss_change_sample_sd"
+        ],
+        "sybil_2/seed_44/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_2/seed_44/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_2/seed_42/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_2/seed_42/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_2/seed_43/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_2/seed_43/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_3/seed_44/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_3/seed_44/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_3/seed_42/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_3/seed_42/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_3/seed_43/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_3/seed_43/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_1/seed_44/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_1/seed_44/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_1/seed_42/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_1/seed_42/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_1/seed_43/backdoor/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ],
+        "sybil_1/seed_43/clean/results.csv": [
+          "round",
+          "clean_loss",
+          "clean_accuracy_percent",
+          "asr_percent"
+        ]
+      }
+    },
+    {
+      "name": "model_poisoning",
+      "path": "results/studies/equal_samples/alpha_0.1_scale_10",
+      "manifest_sha256": "bc6615c5a2885beb80fe0e5fb9f6656e59f8ed14c82e18e86583dfbdbd4d2211",
+      "verified_entries": 31,
+      "csv_schemas": {
+        "seed_44/poisoned/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "seed_44/poisoned/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "seed_44/clean/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "seed_44/clean/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "seed_42/poisoned/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "seed_42/poisoned/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "seed_42/clean/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "seed_42/clean/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "seed_43/poisoned/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "seed_43/poisoned/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ],
+        "seed_43/clean/results.csv": [
+          "round",
+          "loss",
+          "accuracy"
+        ],
+        "seed_43/clean/updates.csv": [
+          "round",
+          "client",
+          "update_norm",
+          "sent_update_norm",
+          "scale_ratio"
+        ]
+      }
+    }
+  ],
+  "input_file_sha256": {
+    "results/defense_baselines/pilot_alpha_0.1/per_seed.csv": "07524ee40f638d728d8f73daf7abce1da302e5d0b54d6aa5fe2a2c8a6efa879d",
+    "results/defense_baselines/pilot_alpha_0.1/summary.csv": "e4d8f3b029f8e7957344db33de86d15e6811c05da6dd99960cdfd89460d6fe7a",
+    "results/defense_baselines/pilot_alpha_0.1/environment.json": "2d0115858b8b6ca93dda8b09845dc6b74c84790c81a091dcf7a989fc693ec32c",
+    "results/defense_baselines/pilot_alpha_0.1/config.json": "82ef3bbcd125ce91958d3ff8df1e46672bc06977236bffac54773beb55794e42",
+    "results/defense_baselines/pilot_alpha_0.1/checksums.json": "446338fef2687551df4908667c99a91a78736548b8498bae77d4fc0e286f4ceb",
+    "results/defense_baselines/pilot_alpha_0.1/provenance.json": "ed83cd08e25aa379227c1e5cabdc3dc7bee1dca154a8ea357852a709097855c3",
+    "results/defense_baselines/pilot_alpha_0.1/dataset_hashes.json": "4de6e68521e270fcf0aabc9b4ef2a03c088ed1c046840959857b194605c6ea47",
+    "results/defense_baselines/pilot_alpha_0.1/source/source_compatibility.py": "4a5672c07f4c4472249dc11e8b60b3522f3dd5cd68ae89603c245ec4fc326c68",
+    "results/defense_baselines/pilot_alpha_0.1/source/run_sybil_backdoor.py": "3b366d0ee060d96eadf780de9c3b1927255813ae2f2a0bfec49fe1a5c3a3e3d2",
+    "results/defense_baselines/pilot_alpha_0.1/source/client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "results/defense_baselines/pilot_alpha_0.1/source/run_balanced.py": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+    "results/defense_baselines/pilot_alpha_0.1/source/run_backdoor_sweep.py": "6c26eb68ce0891b8872905439e93b3613f200e9613996c279e81c364fcd1427d",
+    "results/defense_baselines/pilot_alpha_0.1/source/config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "results/defense_baselines/pilot_alpha_0.1/source/run_experiment_c.py": "7f9486b457aec6db582f7805189dfdbe05cf2be7f60c7ac22730bbb45a46e502",
+    "results/defense_baselines/pilot_alpha_0.1/source/balanced_partition.py": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+    "results/defense_baselines/pilot_alpha_0.1/source/run_backdoor.py": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+    "results/defense_baselines/pilot_alpha_0.1/source/run_defense_pilot.py": "8da10ff72c7c436bbc175c96ecf54dfbd12239499601b6f65f2483eb8f044f27",
+    "results/defense_baselines/pilot_alpha_0.1/source/defense_aggregation.py": "da404750ba3d73aade19d3d49fc8fe2fbbbb1aa11d121f5632da8d122d7a6b05",
+    "results/defense_baselines/pilot_alpha_0.1/source/tests/test_backdoor_sweep.py": "235a3ad77805d219296326b8d1445547d80d7ab110d79e8015943cc5d7abf373",
+    "results/defense_baselines/pilot_alpha_0.1/source/tests/test_sybil_backdoor.py": "f16b02bb77c589ee56600502439390cc073706bdadf0bc6c4c2d00b6a3aa2416",
+    "results/defense_baselines/pilot_alpha_0.1/source/tests/test_defense_pilot.py": "bef69209f01b3e1cb29759274a844712fbf27ab5a71691d860963ad51a79142e",
+    "results/defense_baselines/pilot_alpha_0.1/source/tests/test_backdoor.py": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/model_poisoning/environment.json": "25c08c694839574b435f01820ae553f048be7934675ee88007087d1173b2ae07",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/model_poisoning/checksums.json": "bc6615c5a2885beb80fe0e5fb9f6656e59f8ed14c82e18e86583dfbdbd4d2211",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/model_poisoning/dataset_hashes.json": "894e1ee669687a844872e5ce1d6e47bbb5e976ffac74c829fac99f06d3678935",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/backdoor/environment.json": "40e598684cadd0dde3d14bf1e90ce925ea49e62bf4611f98dc2925e3955e95d1",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/backdoor/checksums.json": "f105dcba3429b373e06167547c52dd0781cede309840dcb5161a6280688722ff",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/backdoor/dataset_hashes.json": "4de6e68521e270fcf0aabc9b4ef2a03c088ed1c046840959857b194605c6ea47",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/environment.json": "d4bb1ff03ac55d99695d0c244ed3afe6ba390e7af08a8df92c74d3b98d9d49c1",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/checksums.json": "f1437babd719405110c285a77f6abe88a2ffc10f89a52b945edc6408cd24c6bd",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/dataset_hashes.json": "4de6e68521e270fcf0aabc9b4ef2a03c088ed1c046840959857b194605c6ea47",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/source/run_sybil_backdoor.py": "3b366d0ee060d96eadf780de9c3b1927255813ae2f2a0bfec49fe1a5c3a3e3d2",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/source/client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/source/run_balanced.py": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/source/run_backdoor_sweep.py": "6c26eb68ce0891b8872905439e93b3613f200e9613996c279e81c364fcd1427d",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/source/config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/source/balanced_partition.py": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/source/run_backdoor.py": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/source/tests/test_backdoor_sweep.py": "235a3ad77805d219296326b8d1445547d80d7ab110d79e8015943cc5d7abf373",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/source/tests/test_sybil_backdoor.py": "f16b02bb77c589ee56600502439390cc073706bdadf0bc6c4c2d00b6a3aa2416",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/sybil_backdoor/source/tests/test_backdoor.py": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/backdoor/source/client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/backdoor/source/run_balanced.py": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/backdoor/source/config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/backdoor/source/balanced_partition.py": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/backdoor/source/run_backdoor.py": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/backdoor/source/tests/test_backdoor.py": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/model_poisoning/source/client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/model_poisoning/source/run_balanced.py": "ffa38355baa105d7e611640a5ada89daceb3093ddb272e9305231f35b210aaf4",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/model_poisoning/source/config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "results/defense_baselines/pilot_alpha_0.1/baseline_provenance/model_poisoning/source/balanced_partition.py": "3d07839e58573172be5f7eb6caf0161b5b8bc8a55d7e841cb1fb00318dbcdbd0",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_44/attack/reuse.json": "438b3427963fe03dc76079160a3f96ec0187249fbad7c5da2fba1910ccaf7142",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_44/attack/config.json": "7203079957f04121bb7eeccfc25640804f344dfa00898ec5b853375d08a7d689",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_44/clean/reuse.json": "5682c834366e4856711b1e01065310833a2ff1a9a6c010778743e567c4947cee",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_44/clean/config.json": "05ede0b1be83b17fddec19c7e2bae3b9ca5284a2e92c31242754ae93d8cccc1e",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_44/clean/original/results.csv": "e4f1c5dacc6eedca5261f66dd7304b9bb7f950969ac1b71fe41e4e960f13cda7",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_44/clean/original/config.json": "aead0061c806f659a485f6d42727195e23ad44d2d268478aa1ffc7cd8b5adf58",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_44/clean/original/partitions.npz": "b822644c2ea83bf60e5d10d0cc2e0110b15c3732aeedf6bc88ccc3b602ec575e",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_44/attack/original/results.csv": "15a754919ba025414d2da37fe1885de9603091f275c1f0a1da260cfd4febf35c",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_44/attack/original/config.json": "57b1cc9184e1f68bff62f3fd12d96fffc6c7857aecd228499d6c9282b9dffb42",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_44/attack/original/partitions.npz": "b822644c2ea83bf60e5d10d0cc2e0110b15c3732aeedf6bc88ccc3b602ec575e",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_42/attack/reuse.json": "7deb232d670abcf2da1a8a7fcdb93f0cbb3ed825642821aa376e45a3493bb6a5",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_42/attack/config.json": "3e028e2353f73429f7b113724ca20b05c6ca1572579a79c35fbba9a799dce7c1",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_42/clean/reuse.json": "a5b1b8dad09e97aadf2e006827212faec51d3f937dc88102115adfb414c29741",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_42/clean/config.json": "96d6c1a87b634653e3b469db745a6bbde11ac8cb610ccabdaa57de3d41fb800d",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_42/clean/original/results.csv": "6e61cae9085fa50542e04ff766c101caa747ea0110253d6949eeeb4610102d08",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_42/clean/original/config.json": "fd574b7a57331274c7f1f38b383960cff6fef44a14d4d3996fe89261b87c5df9",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_42/clean/original/partitions.npz": "4360c256e96284fbfbc45d70cb57b061f460ee135914acefb7a5350d1ee540d0",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_42/attack/original/results.csv": "28847ea2d99cf72d94f63b4ab70e875a23a074e11ad36e23a222234bfe701827",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_42/attack/original/config.json": "f740f99297f5cd2447ce67da59161d8d5b3b138e045a1839010d8edd31fd9ced",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_42/attack/original/partitions.npz": "4360c256e96284fbfbc45d70cb57b061f460ee135914acefb7a5350d1ee540d0",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_43/attack/reuse.json": "090623b9f5a3d02ba7a85507b516a72a0c3e65b4a3a6d396b482227dec3c0077",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_43/attack/config.json": "b56502d12954a6fe65856f01919da7e58780221bebb0b936acede10da0072ad6",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_43/clean/reuse.json": "e64e920cf4a27d9344d0e50232c3329c96321874b9fb4eb669f4ccbf2df3b89f",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_43/clean/config.json": "4e2236fc7c6a828e3cf5662e1e104c49e9353d0c83308114d02e44b944ebdc12",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_43/clean/original/results.csv": "386d38786459f116902ed42769cd368e03e8c94820fa10e619dbcc422e23cd0e",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_43/clean/original/config.json": "ac06585bfbdcf91a421908fa0e5af8e4eaf8b6712d3d618311482ee648999c64",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_43/clean/original/partitions.npz": "daebeb0d066369b4b5cb2393f066e4f41d973744a297d2b99b09fe3dfdf04a09",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_43/attack/original/results.csv": "66688b0c2271a0a3a8ced77c10f7ce78ccefb4d214e0feae13b19c461eed535c",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_43/attack/original/config.json": "e28abfe13fedc63226df8de8cc314cfb2f98ea8d7e6b9d4e23e6130bd02e8482",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/fedavg/seed_43/attack/original/partitions.npz": "daebeb0d066369b4b5cb2393f066e4f41d973744a297d2b99b09fe3dfdf04a09",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_44/attack/results.csv": "31b3ecf2b34987cbc6815975854fd630e4799e6ef6af7e987171240e84d0efcd",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_44/attack/config.json": "04c6b9b285e780d07f2075e52682846fd79e347bca062d6370632bad9a387a08",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_44/attack/partitions.npz": "b822644c2ea83bf60e5d10d0cc2e0110b15c3732aeedf6bc88ccc3b602ec575e",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_44/attack/aggregation.csv": "e580b7a3d613465306da6a6ffe92c53b49f48fbab6b77458e08f37ce2f7f0620",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_44/clean/results.csv": "738f280072b1876f08af5d877e92ff08da6dbb4e381366e9f9b919819c540447",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_44/clean/config.json": "b81e6ff90356581c8d1b388819728938512bec210bb27b11fe2aa2a0aa448f3a",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_44/clean/partitions.npz": "b822644c2ea83bf60e5d10d0cc2e0110b15c3732aeedf6bc88ccc3b602ec575e",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_44/clean/aggregation.csv": "8b517c90f4eaa6d16017aa20c91785597f78b83f832e64cfccdeb284827ed447",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_42/attack/results.csv": "a9f2a546b87d72b4b71ea35aac28b73f47c5ad0b01e0ac1c78dbaaffb7fe77be",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_42/attack/config.json": "ac3a69e8d8d706592537edd61abb82653875821540479692c3376c10533fca3f",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_42/attack/partitions.npz": "4360c256e96284fbfbc45d70cb57b061f460ee135914acefb7a5350d1ee540d0",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_42/attack/aggregation.csv": "dd44276b36edf3f24c66547061e82ab7ca92ea5b1fde42e866c30b47bc39d2c4",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_42/clean/results.csv": "1c690cb157c549fa7281305678b50769953d11ea6f841b5dd81ff8dc34cd4d87",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_42/clean/config.json": "71059b5a91442879d8e5053ef989e7abbdcaf98d14c26efab804f0220ab058c2",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_42/clean/partitions.npz": "4360c256e96284fbfbc45d70cb57b061f460ee135914acefb7a5350d1ee540d0",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_42/clean/aggregation.csv": "383613c109a67fa541be3d2020d59f2b30adf61464a313cb383329d27577eefa",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_43/attack/results.csv": "714eca3c091f853cbbaedd907c5b5228aa6c94b5a20d89a6ebafebfdd2943c09",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_43/attack/config.json": "5cc3c995e4f8ea0030d9ae4f02ac0b5cdce9636f3ee4a86130157a4290d5c606",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_43/attack/partitions.npz": "daebeb0d066369b4b5cb2393f066e4f41d973744a297d2b99b09fe3dfdf04a09",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_43/attack/aggregation.csv": "699b88ea01b213702aa36d22f269b7b6dd2e02377dad74d94f531be6a3d3630b",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_43/clean/results.csv": "e6b5ebaf72f2373bf29f2a99ddd306981b74c0e9eeab2f604ad7500753125a90",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_43/clean/config.json": "9e2845639f29b2c98fa9adfeb3e6e250cd20ba5c4517cb89807cc9be0b0c99ba",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_43/clean/partitions.npz": "daebeb0d066369b4b5cb2393f066e4f41d973744a297d2b99b09fe3dfdf04a09",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/coordinate_median/seed_43/clean/aggregation.csv": "55ca9c4aa0003ebc794fdbd20fbe04fc29e2c407b2c5903285d91c1f1e81473d",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_44/attack/results.csv": "73bd2620ff250de74b5a3b350af8e4ac2f43f7cad922eddda5ac4fd54e1195e1",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_44/attack/config.json": "df4ed01a471f3b646bd0112add6b56aa5fa998f0e1af80931d62a7589e5a9817",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_44/attack/partitions.npz": "b822644c2ea83bf60e5d10d0cc2e0110b15c3732aeedf6bc88ccc3b602ec575e",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_44/attack/aggregation.csv": "b9679c0e2effcc9eb0e11318ae4dc939ddf5b45cbf117938819b282b5be0ea55",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_44/clean/results.csv": "3e75d810f8fb438ed53ba94bf90048a365997d5d33b74404f4d6522df26a259e",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_44/clean/config.json": "91c5269dab3d1610c76a7ed72286848d9667e3aaa6ca9d5aea4cc7a2b859086f",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_44/clean/partitions.npz": "b822644c2ea83bf60e5d10d0cc2e0110b15c3732aeedf6bc88ccc3b602ec575e",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_44/clean/aggregation.csv": "8cc44a4277011d1e1faabdf7cf051da617d46be385bfc0bb563d8b74c3e6305c",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_42/attack/results.csv": "65dc0b46ddee78f5a1669816da907a5deb7921813ccb6162f4fd6063fc418036",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_42/attack/config.json": "fb1ee528cfc19cb65226bbfd685455b15a48a839c767be1a34fee2002e919ae6",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_42/attack/partitions.npz": "4360c256e96284fbfbc45d70cb57b061f460ee135914acefb7a5350d1ee540d0",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_42/attack/aggregation.csv": "b14a63f416aa1aeea6bd8b0a31b2a6b03b456f49c06ee07c45ababa3826bd848",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_42/clean/results.csv": "2b8334c2d23227966504e382b7222b5fd281d384c2b594e23119dc622ec49cfd",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_42/clean/config.json": "65e6100ba2738934bdaa44ddffcb09d31db5469268e7f42ecb7239d2112da650",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_42/clean/partitions.npz": "4360c256e96284fbfbc45d70cb57b061f460ee135914acefb7a5350d1ee540d0",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_42/clean/aggregation.csv": "4e716f3fd8a0f9a3afc62ec7e4d7c422b4160c42c1d06f534ef0874746e1253c",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_43/attack/results.csv": "ac485b12e2b6fb04661a887a9d5184e570d1ef5ae216b6295d21b16a018210ae",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_43/attack/config.json": "e3d67b06a50a1644edcc74d5f1ed1f25ab15940f6122b074ed7499f699ef7676",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_43/attack/partitions.npz": "daebeb0d066369b4b5cb2393f066e4f41d973744a297d2b99b09fe3dfdf04a09",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_43/attack/aggregation.csv": "3f47c6871c382c61955bd47fa4ca74237e309a3ad458e13f6c10909bfc79accf",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_43/clean/results.csv": "19f427997f2e1553dbd26e86f811bef0fafe953d81531bf635139a0d4b5d0a19",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_43/clean/config.json": "c6ae1e14869df9afa850f8beab7ec194cfe66cd089c4a29417f14d646352b98d",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_43/clean/partitions.npz": "daebeb0d066369b4b5cb2393f066e4f41d973744a297d2b99b09fe3dfdf04a09",
+    "results/defense_baselines/pilot_alpha_0.1/sybil_backdoor/clip_fedavg/seed_43/clean/aggregation.csv": "85ca7936c99e11ce29646f00cd55b3312f01157474fe28e3465a146bd237f990",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_44/attack/reuse.json": "56631ecfc9c40f4cfbfd39bf339661609997abb2d87f338eb76c157305ae43a2",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_44/attack/config.json": "f6e6bdfd854cd1e3d9398d11f52cca8f22315c74d8c3b91f9b312b0e5f283788",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_44/clean/reuse.json": "18e1c732e1f06b6b19e4e35155d46097cdb8d8620fbba51da2e5aa9e4ec67a81",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_44/clean/config.json": "ae6b9eeeb6aad0fb31adc153b76fc86eb90682cb2028621449cbeb6a2e672ec2",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_44/clean/original/results.csv": "cfe0a62b1c6923370a1397bc9f9f8255d0dccc47739f18e1a0888754faa39073",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_44/clean/original/config.json": "aa067563b62ae5c268ade50b5f0805dd437a542eb9c3a6f2b52b7cf089b045db",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_44/clean/original/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_44/attack/original/results.csv": "721e2cca3429c0483061b6878ca191a28a1a7f78688c5b848f72596f20040f01",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_44/attack/original/config.json": "1134fa2fc037c29c76deaa154c6e58705ea969c85a7d7312187266659b5ef198",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_44/attack/original/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_42/attack/reuse.json": "db8f4f86fdf082781d80473772702ac5a2cd2a4a58b0cc6a5b52648fd24d20d7",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_42/attack/config.json": "4aa4cc4500c92768f07dcd5ffe2877a229018b83cc9fba16bd0ecbc49197532c",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_42/clean/reuse.json": "fb9482227ffb5e253e1f2f6717a79c594729ae0513561abb7599e5e0273e783f",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_42/clean/config.json": "b12cf0de14c01463dd480859925bdfa8019f82dcd1af4349017128072de3e238",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_42/clean/original/results.csv": "d5f1127d577b5b8f030298be004f2d2380da661b446375d391ec9f8d18fb6e01",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_42/clean/original/config.json": "8fe84ef83e4ee13ac6f309f591bc89a125ceb1b8558505d4c10ea015fcee714d",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_42/clean/original/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_42/attack/original/results.csv": "094dc0d607050114f46758bc768c46176792f1f5a695f8ae13faaeda8ca468a6",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_42/attack/original/config.json": "82f67acea2a1730921722a7891929b7ab3998fe176fc232d3b56900d9d7c3256",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_42/attack/original/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_43/attack/reuse.json": "70fe86463b0dc1fe4f442bec9ded2732a826b3fa58a7fb71d647eca01a08a2a1",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_43/attack/config.json": "a5e11e1641b3e33bff02cb73a104b9eaf77f41f9c84f4ee74f01949002467ce6",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_43/clean/reuse.json": "34533299e943bc7b48ce911aa0bc81fd89da5a67d770118137815fac60d9b288",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_43/clean/config.json": "ad5f7ee50a9fb7a2a0ca23d13ce5137e93fa4d61b04b345e3c8774bfd1d66d26",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_43/clean/original/results.csv": "02c58f7491256a84789b6c56a203ab118e6938e6c5248e6b05fad380df705544",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_43/clean/original/config.json": "7634d7e65f28d3891834f2b184fc4dd9c2020fc6e45fce7ae2d1023bb1122789",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_43/clean/original/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_43/attack/original/results.csv": "77fedb3884f0a48814f737c6e6f125e9797dd398fe61bc0cb76b595fabf82a9b",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_43/attack/original/config.json": "4774e4d004327fda193378199d8444520559ec061042a93c74589fc04152b6a6",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/fedavg/seed_43/attack/original/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_44/attack/results.csv": "37672b790a8c547d927769cf69036c89de267070e614e27870ccc19b842dbe31",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_44/attack/config.json": "42c5bb755987ddb1ff0a5b3bcc66be6adf606f6c03a31163639023fe53415758",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_44/attack/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_44/attack/aggregation.csv": "0f1a122a4ac80926a405b76cdbb101f7fe72a7bf8f1bee83cc38ea9b5cc2f5aa",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_44/clean/results.csv": "087aeed9135cfa0053421e237def08634caebea2521371a1301a88fd681cd59b",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_44/clean/config.json": "bd4351b47ca2e28666eac2cef3c49320a85de9deb82dd3cccefc547d2527e10a",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_44/clean/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_44/clean/aggregation.csv": "68b0379bbcc5362c1cb127a7549e0c58c0704b6ecf11bb5b75e44e600987ccb6",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_42/attack/results.csv": "a0cbfab7e5967f2f927fad2def46df51e43369577cd00776897d8f8416affe9a",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_42/attack/config.json": "2eacaae3adad1ee3ba508025470ee482657dc9b80c9ef477eb3c9d6e5d339739",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_42/attack/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_42/attack/aggregation.csv": "60cd94302d21176a351453bc5efee004cb6684af978a1c92f97ff90664a1bb6b",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_42/clean/results.csv": "f07c3711bc2e9d89bd9c1c04549edad5c19a851b15935fa1b89b5cc3c4bee701",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_42/clean/config.json": "0a893b0fe2b2c4d25f80062091949bc5649d0712379f5cb4de34127335400804",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_42/clean/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_42/clean/aggregation.csv": "df94904222d13e5a66e7869be7f4efbd88bf2128b91794d23727fad90ddfbe48",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_43/attack/results.csv": "b29a8adb019b27f0cfd32a19fc199d33a7a19b9cffc6576552d02e8a0e576e78",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_43/attack/config.json": "2d467d78933ece4cfbaef2418e8262702eeb4f0dd024ab42615ffb87900b2732",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_43/attack/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_43/attack/aggregation.csv": "0aa7d48d1ca9ef56fe7d146656bb40a87a07c4532dcfc5a4934815966ccf91b3",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_43/clean/results.csv": "b30e6c6843ee1a8b5379e0e9656dc8097ae1c3abc54e6fa2d5bb3e305dbe9bce",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_43/clean/config.json": "aa902c363470b70d1faf987c0192e0239d7cf561231970baef023830e3570813",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_43/clean/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/coordinate_median/seed_43/clean/aggregation.csv": "5efcbd5578c10af1c19d7ad9d2870329a28176f02fea77424997ca0e7534e290",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_44/attack/results.csv": "ad0be967719e04083fd32e9a355e3d4c435d6dfbb9c68b8760ef16074c397656",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_44/attack/config.json": "c39a20bc2e2bd5e3810d910a75bd47b06fe557a0f452686453fbcd8f1ea0f8cb",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_44/attack/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_44/attack/aggregation.csv": "085bd9336eb8850e372e7c90bc998eda47dfb3f2ed48517ecb4f8f90c7237455",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_44/clean/results.csv": "54c6cb68ebffdbc6539c8c25358087b98afe385f600a5cf075aaff22e9cea632",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_44/clean/config.json": "d255778bcd6280eb445c3dd12617b4f3abde55df9cc99e903a442889bb6619d9",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_44/clean/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_44/clean/aggregation.csv": "f6fc8c61db57afeb9e4884368347c4a6b4cd823102912be3739871e92d3f59c1",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_42/attack/results.csv": "ddbab01ef5c8edaf284684a54538d7bf0a5f07b2ac235f67f94390656014f7d7",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_42/attack/config.json": "820b827590e75c43c48164c2245e339fd293c64f5f4a9ebf9d68875f9e7b4c4d",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_42/attack/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_42/attack/aggregation.csv": "75533ad0667ad6709458207d30b9684f5c9c56a42d3dbdee3261dbd92bb7aa3d",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_42/clean/results.csv": "081f20d521483ea82ad9b752b60dcbc04a475da0d5cf2176f9b7ad1a3e8d6eff",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_42/clean/config.json": "b9de0b6a773b5b693d41a302d0d2979b4285b068578139099b2ef7e9f55b205a",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_42/clean/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_42/clean/aggregation.csv": "943ac18352b499ca0762342a3f43df94a79e83e2de243209f41a671f365f9e1a",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_43/attack/results.csv": "5de5e040c5ab010ed943aa97bc08065acc58a5467ffc2576d136970a033c030b",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_43/attack/config.json": "ccbbb28e8ec9e6b9ee5240393654868e9d8438def37ea584ee402a1c48f49a87",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_43/attack/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_43/attack/aggregation.csv": "7b7c163a23cd47260b1d9a92f9d79227ee8e5fe601ef6f1ccbb01921dd278c12",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_43/clean/results.csv": "585377e12064489f99829e3752ef28b68454b10aa6e5466cd99532d2c88c4463",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_43/clean/config.json": "df28374d52c8da2fabd14b4816f4084bc8c5fa4fb529ae4a6f36d359dd04290b",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_43/clean/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/backdoor/clip_fedavg/seed_43/clean/aggregation.csv": "777451870758872d18272b21c48c29ebc7c23ccf38117400317764d2aeb010b7",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/attack/reuse.json": "30511cfcfbcc251dc5676eee66bbf1983c14119f1ccda77a25b651ce384beb3b",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/attack/config.json": "cd1d192c429309b1a596a1caede4f0d14301b5feaa1832931b1f11151e46d868",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/clean/reuse.json": "c4de01981998714b3cd23af3f080db082e7e8749fda59cdb545f1ed46a2fc106",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/clean/config.json": "74a4b9066c4f71258aa44dfdc5494305c4074da69eccf241257f92a82b7d4696",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/clean/original/results.csv": "7aaf2c614ad3145342c3808cc5e27ef4c06b42ac9bbda064841588cb2adb697a",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/clean/original/config.json": "d4ff0cc47371ae762e7431dfb5f9f4ab1b8e617ea406f5b863ddcf8c27531685",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/clean/original/updates.csv": "6af1137b6a65c9775f741a2d26bc1a46a051d8aa1b3d5eab78b0f7a835bfcb9c",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/clean/original/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/attack/original/results.csv": "d7d9018abf468cecce1be2ac88002df97d31207bb4ee95b9a1fe32ab3cfc6afe",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/attack/original/config.json": "a02145ef129d7f08f5c3edbcfd4d1ec01d554a78d04879e811c9d5268b62fbba",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/attack/original/updates.csv": "6a879fceb76ac00e3e9c8355a074d65d3e0deb0b049247b4b6dfbadd9ae34378",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_44/attack/original/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/attack/reuse.json": "77f96ba4cb8230569043a2abaeb76536081d539850e79e4a0943d82978446a3e",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/attack/config.json": "72046d8ca97862262de5ee61b98f58167a7fb80f8ea303288024a0a8904c15b4",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/clean/reuse.json": "708bf8efd98e130ebf4588365dd4765d40b51b239fcdf4140131e3faeafc352c",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/clean/config.json": "2040a97d3bc36571d586772b0fbb5c3d5802e36bf00719081fa498a6b298dda8",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/clean/original/results.csv": "4e391dbd60e9ab38d74f8441ea71ea0d2eb1b02ea1fa229756ebeb16ec69fb17",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/clean/original/config.json": "1c3faaf21e5205c5fe62a74d8d39a71d8f60dc942ee6f0c146a7b8ad1e433005",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/clean/original/updates.csv": "1cda58a2f60725b886338a21cbbe73ab57ff5f16dbb2b681a1de04baa11d9e2a",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/clean/original/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/attack/original/results.csv": "9b564f9a28b1a9e5c42e20b67c22e32ace74dffb782ad4693c8abaee78f77d4a",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/attack/original/config.json": "70c0c6be5d1e78c78b77cf14a0bb123c8e8a6515842ca9cf4e76fb983d457c6b",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/attack/original/updates.csv": "0906cd53ba7cb0400e7c5dce3f9a49237d591cf572243de0d7de69ccc16cb604",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_42/attack/original/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/attack/reuse.json": "abd6de035255f116ebada3b38cc22092c009257b88a95c3ecaf79009df0e2fec",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/attack/config.json": "5c13a0ca661e9921a73adf53d7ae0184b57fef9de25fd79cdad5b44419a38198",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/clean/reuse.json": "7f907727d2240a60c8bfc3438160827fd05aec5b95d9ad4c6afd97a6e31b4993",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/clean/config.json": "cd01681618d3b0bdd553562239e7d47088ebf5112f2563b4060d4793f4f2849e",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/clean/original/results.csv": "062b7d3040793ef30674a6dbd3efef25ed2c16dcf8533c9897a7998dacf30711",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/clean/original/config.json": "069ac988d30ffcdaca579f52fedef67c7bd1491887e9842113e93b75e80a5eb0",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/clean/original/updates.csv": "fc294e96674dbf1ed00e1b3ad354d3c31674ef1455b830dac338d4e1ae89caf0",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/clean/original/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/attack/original/results.csv": "ee2e727b5945e82dc254871a1cc67c38d2a37f53c7c7e742f2b6d80bcc7774d5",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/attack/original/config.json": "1b2b985df55f3873456598eef686b165da9ef4b5c95b47d4e1bf127c795ef775",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/attack/original/updates.csv": "b78e8b007f94365ef6a57eb5c4e4f5d80c3717cca4b5e344702f3c08708c3b3d",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/fedavg/seed_43/attack/original/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_44/attack/results.csv": "31df0c0ecfc50d8abf8a288d83d354dbdae5f867323a137f0b496d1e88d5bf13",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_44/attack/config.json": "9f50debb70d9538f17b44c154927cee9a903a5a6049b9b4c5380451ff414147e",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_44/attack/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_44/attack/aggregation.csv": "b6cbfb9fabe73781f1ddedd8a6cbf925a8269fde808d43ae2278fdf541206f77",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_44/clean/results.csv": "d0a1b10fe8760837823402861203f2c40f4db92f855919f8e142f657bd59ded6",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_44/clean/config.json": "44e1bf2ab72b696227868faafb5510c10569083a5f2f5142367036959b660a5b",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_44/clean/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_44/clean/aggregation.csv": "68b0379bbcc5362c1cb127a7549e0c58c0704b6ecf11bb5b75e44e600987ccb6",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_42/attack/results.csv": "bbf67dbd6c1c9e3b1bc82a870b9271473d10934167f1536c2515eb107a5e2b65",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_42/attack/config.json": "ebf6c7708bb40a15b1ff8b8befa5f60475bab065db150a17c1bad4c5ad573d0f",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_42/attack/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_42/attack/aggregation.csv": "625c7a2c502b5891001f4833588d602809e208434e4a4048c72a12d2dd522806",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_42/clean/results.csv": "45576fdc36e38dab10ed242bb6fb37aecb918e8c49472604e7fbb33d90c3d14f",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_42/clean/config.json": "de77b0d7a0f497ea98a67cf9a2142252dd1515a7eda0751650ad12111da16f52",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_42/clean/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_42/clean/aggregation.csv": "df94904222d13e5a66e7869be7f4efbd88bf2128b91794d23727fad90ddfbe48",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_43/attack/results.csv": "d753c103c1dc750344ac260fdf5ca8519d9a47f66fc33ea85fda791307e2c855",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_43/attack/config.json": "f220db310194b4bc19cd89ec5bf6add6906dbb9b4fa98e9a49bfceb327314de9",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_43/attack/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_43/attack/aggregation.csv": "4b8adc5a2817fd11a072198560da7a02129a18b83d58a66120e6ba98ccca5d21",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_43/clean/results.csv": "aa7e284cafd3a850aec2ae054ed33ea6343fb16ccd6f2409bd3a2b0fd6bb8166",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_43/clean/config.json": "71addbca655e90bd86af4be5e897214d17e3f9860fcc8a0d5b65532f8933fd72",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_43/clean/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/coordinate_median/seed_43/clean/aggregation.csv": "5efcbd5578c10af1c19d7ad9d2870329a28176f02fea77424997ca0e7534e290",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_44/attack/results.csv": "6699699856e66bac5bff02f19fa326797104513a9cdf24079250aa73f94be8a3",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_44/attack/config.json": "daaabfd30cb43d8b21de1ebf8afeaf5c6b125ba671da8c18825862c3f144ce8f",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_44/attack/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_44/attack/aggregation.csv": "3318d5bfd639cb26eafcb713fb51aa55d2fa4cd85ef7fb1fb9d0d5020cfeb1a7",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_44/clean/results.csv": "11f3d4a1620091112c05ac486d5bc212f5b20d3c40e189cac028b7e99ff12a10",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_44/clean/config.json": "fea08764e7ccb0bc820cfd5b268411c9e22fb8e72c02b4b0375985e276190f1b",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_44/clean/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_44/clean/aggregation.csv": "f6fc8c61db57afeb9e4884368347c4a6b4cd823102912be3739871e92d3f59c1",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_42/attack/results.csv": "317d5bcb9d730a263ce5ac31bcc8bed977f3d9398bc345c168cc59d52eba3552",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_42/attack/config.json": "9f065b79bbe62c3b370ea858291301225dde6c2cb326041c8a28cceb22b7eb28",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_42/attack/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_42/attack/aggregation.csv": "b14780b8cf82d3d3ec3fb603c58d512d030a06ed3f7e43225bf7dc081d0e127f",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_42/clean/results.csv": "1c5062db7f6e7352f76d4bf13b89959758cd78e0b671295d69463a3ea6ccfcf7",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_42/clean/config.json": "d0b94f4d38b5722734758c0e90960c5455f7c96d04193e9d6deafea5a20ccb77",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_42/clean/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_42/clean/aggregation.csv": "943ac18352b499ca0762342a3f43df94a79e83e2de243209f41a671f365f9e1a",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_43/attack/results.csv": "c0380aac2b3d0c49f36f08e0419b4106168dea12116b04442a160b55fbff8794",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_43/attack/config.json": "08a85e40d2afa06b42b32883e63d02002e6ee23d0d2715152f045fa3869d5c59",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_43/attack/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_43/attack/aggregation.csv": "1cb2aa9f0dcae75c16baef339ed6c8bdbbcdb01194f0c691e785e28abcd2d249",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_43/clean/results.csv": "e84444d70d5bde73eef99bfc82f304e4451fb7968f81b2f83aa8571e10c59e19",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_43/clean/config.json": "59d52feb2db08a3f03a1bcf67d946ff3d672cde9099f21edb2b4ed8c989ef232",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_43/clean/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/defense_baselines/pilot_alpha_0.1/model_poisoning/clip_fedavg/seed_43/clean/aggregation.csv": "777451870758872d18272b21c48c29ebc7c23ccf38117400317764d2aeb010b7",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/environment.json": "40e598684cadd0dde3d14bf1e90ce925ea49e62bf4611f98dc2925e3955e95d1",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/config.json": "c5b8bf480835a04c07854e926693411538a6788c3895863b4dc5c00eb6473648",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/checksums.json": "f105dcba3429b373e06167547c52dd0781cede309840dcb5161a6280688722ff",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/dataset_hashes.json": "4de6e68521e270fcf0aabc9b4ef2a03c088ed1c046840959857b194605c6ea47",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/summary.json": "2df22b61beca5958a21f8f58bc03d28b55a3f8ad982abbbde8a7a2bebaa4c117",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/source/client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/source/run_balanced.py": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/source/config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/source/balanced_partition.py": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/source/run_backdoor.py": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_44/backdoor/results.csv": "721e2cca3429c0483061b6878ca191a28a1a7f78688c5b848f72596f20040f01",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_44/backdoor/config.json": "1134fa2fc037c29c76deaa154c6e58705ea969c85a7d7312187266659b5ef198",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_44/backdoor/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_44/clean/results.csv": "cfe0a62b1c6923370a1397bc9f9f8255d0dccc47739f18e1a0888754faa39073",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_44/clean/config.json": "aa067563b62ae5c268ade50b5f0805dd437a542eb9c3a6f2b52b7cf089b045db",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_44/clean/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/source/tests/test_backdoor.py": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_42/backdoor/results.csv": "094dc0d607050114f46758bc768c46176792f1f5a695f8ae13faaeda8ca468a6",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_42/backdoor/config.json": "82f67acea2a1730921722a7891929b7ab3998fe176fc232d3b56900d9d7c3256",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_42/backdoor/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_42/clean/results.csv": "d5f1127d577b5b8f030298be004f2d2380da661b446375d391ec9f8d18fb6e01",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_42/clean/config.json": "8fe84ef83e4ee13ac6f309f591bc89a125ceb1b8558505d4c10ea015fcee714d",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_42/clean/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_43/backdoor/results.csv": "77fedb3884f0a48814f737c6e6f125e9797dd398fe61bc0cb76b595fabf82a9b",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_43/backdoor/config.json": "4774e4d004327fda193378199d8444520559ec061042a93c74589fc04152b6a6",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_43/backdoor/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_43/clean/results.csv": "02c58f7491256a84789b6c56a203ab118e6938e6c5248e6b05fad380df705544",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_43/clean/config.json": "7634d7e65f28d3891834f2b184fc4dd9c2020fc6e45fce7ae2d1023bb1122789",
+    "results/Backdoor_test/mnist_alpha_0.1_ratio_0.2/seed_43/clean/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/per_seed.csv": "7a373b151883b320a6814a803b829270ad59e9b83aaded124fe3c7ffb82b31d7",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/summary.csv": "34ec5ff8bde0a0f48597384ec527b78183b1424fdadb2b8c023df1820cc77797",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/environment.json": "d4bb1ff03ac55d99695d0c244ed3afe6ba390e7af08a8df92c74d3b98d9d49c1",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/config.json": "30f61404cebb2f2ff7c122670f195d5c03eff7f9211ebfba6664716ad9491753",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/checksums.json": "f1437babd719405110c285a77f6abe88a2ffc10f89a52b945edc6408cd24c6bd",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/provenance.json": "0b96a2271e3d3fb3c4515fe23092f240a6b725f2b221c5e0ebe12f5943a59b80",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/dataset_hashes.json": "4de6e68521e270fcf0aabc9b4ef2a03c088ed1c046840959857b194605c6ea47",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/environment.json": "40e598684cadd0dde3d14bf1e90ce925ea49e62bf4611f98dc2925e3955e95d1",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/config.json": "c5b8bf480835a04c07854e926693411538a6788c3895863b4dc5c00eb6473648",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/checksums.json": "f105dcba3429b373e06167547c52dd0781cede309840dcb5161a6280688722ff",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/dataset_hashes.json": "4de6e68521e270fcf0aabc9b4ef2a03c088ed1c046840959857b194605c6ea47",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/summary.json": "2df22b61beca5958a21f8f58bc03d28b55a3f8ad982abbbde8a7a2bebaa4c117",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/config.json": "c720b8dcbc35184035ca3fe23705f6d0ea9e45e7d5bb9e5696b0cbbace5269fb",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/checksums.json": "ac0a2589bf47cf95c09282ee7a9cef828edb5336233417b878ef80dea4213be9",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/summary.json": "fda41b5b4d1d21600d6c454b6c5364a703d51971572a41dbafb11ea492438316",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/config.json": "522d6284f610f478d18ec75aa9b5ed483ccdfdb480358fd48add884db61ecd10",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/checksums.json": "e1502477fe664f0cd47d47789ad7e172a60ab11129ce1be4d9a47062e5b977c1",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/summary.json": "2c8af1b4e807d70558102a2ba44a68e9c974486da91ee224ec58df894961aca5",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/source/run_sybil_backdoor.py": "3b366d0ee060d96eadf780de9c3b1927255813ae2f2a0bfec49fe1a5c3a3e3d2",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/source/client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/source/run_balanced.py": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/source/run_backdoor_sweep.py": "6c26eb68ce0891b8872905439e93b3613f200e9613996c279e81c364fcd1427d",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/source/config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/source/balanced_partition.py": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/source/run_backdoor.py": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/source/tests/test_backdoor_sweep.py": "235a3ad77805d219296326b8d1445547d80d7ab110d79e8015943cc5d7abf373",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/source/tests/test_sybil_backdoor.py": "f16b02bb77c589ee56600502439390cc073706bdadf0bc6c4c2d00b6a3aa2416",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/source/tests/test_backdoor.py": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_44/backdoor/results.csv": "e416082f2d3928e08b98b7700c3c9c89340297baf9e88f92b33b12952a2d46ef",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_44/backdoor/config.json": "165613259ee32c8cf6946aba00caef5949daea1c2a5200b6a5fed05b5fa35fe0",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_44/backdoor/partitions.npz": "1091dbbd8319073a3b1b9330a8bf5911db2d694793f2a314786cbdf69f5c0f5a",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_44/clean/results.csv": "89da8a0c38af72fd1dae860a53d8ed7f83694051112ae121b121ee29e899bf29",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_44/clean/config.json": "ea52b562c8ed35e5e06f2b455dd6a3d16c5a5069ebee361779ca20d660777cb2",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_44/clean/partitions.npz": "1091dbbd8319073a3b1b9330a8bf5911db2d694793f2a314786cbdf69f5c0f5a",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_42/backdoor/results.csv": "5a96114da63687916786835acd5a0676175762283d81791f08a2bc8f5432f4d3",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_42/backdoor/config.json": "803ef8beae1015d12c28d5eec80374119694c3f42c305bc7644fa6afbabc45f9",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_42/backdoor/partitions.npz": "9db467dee8460a75436127cd86f7d7e4079c832cf7df07d2f2bfa201732bcc7e",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_42/clean/results.csv": "ca6258b30a384720f3412e65affcb06ac79cebefc7c20c848e7e149d713893e7",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_42/clean/config.json": "d0b685d690ce8f3a24d60ec618b28bed9eb94c810c8ff130cd4f853ee0e12459",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_42/clean/partitions.npz": "9db467dee8460a75436127cd86f7d7e4079c832cf7df07d2f2bfa201732bcc7e",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_43/backdoor/results.csv": "47e3457c965d6435fa302fb2643011207c64854c21b1db2505e90a7362eb0041",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_43/backdoor/config.json": "c1e56688b1d3e313ab19b107168781fc0fc5444628d559b04af8596d99112930",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_43/backdoor/partitions.npz": "5c26391ba9bb600f54c10ce881cd857139751a162aa43f9e44f3e87e660423c2",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_43/clean/results.csv": "d13d57768658fe17b8d5c7f047f77695e802e1acb04b206b41df55ccf6b8f807",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_43/clean/config.json": "80c1eb0d8ff8c0e3d42b8af1ee9f094e1cbfb1fabf4f9d806f4344913602f501",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_2/seed_43/clean/partitions.npz": "5c26391ba9bb600f54c10ce881cd857139751a162aa43f9e44f3e87e660423c2",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_44/backdoor/results.csv": "15a754919ba025414d2da37fe1885de9603091f275c1f0a1da260cfd4febf35c",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_44/backdoor/config.json": "57b1cc9184e1f68bff62f3fd12d96fffc6c7857aecd228499d6c9282b9dffb42",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_44/backdoor/partitions.npz": "b822644c2ea83bf60e5d10d0cc2e0110b15c3732aeedf6bc88ccc3b602ec575e",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_44/clean/results.csv": "e4f1c5dacc6eedca5261f66dd7304b9bb7f950969ac1b71fe41e4e960f13cda7",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_44/clean/config.json": "aead0061c806f659a485f6d42727195e23ad44d2d268478aa1ffc7cd8b5adf58",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_44/clean/partitions.npz": "b822644c2ea83bf60e5d10d0cc2e0110b15c3732aeedf6bc88ccc3b602ec575e",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_42/backdoor/results.csv": "28847ea2d99cf72d94f63b4ab70e875a23a074e11ad36e23a222234bfe701827",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_42/backdoor/config.json": "f740f99297f5cd2447ce67da59161d8d5b3b138e045a1839010d8edd31fd9ced",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_42/backdoor/partitions.npz": "4360c256e96284fbfbc45d70cb57b061f460ee135914acefb7a5350d1ee540d0",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_42/clean/results.csv": "6e61cae9085fa50542e04ff766c101caa747ea0110253d6949eeeb4610102d08",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_42/clean/config.json": "fd574b7a57331274c7f1f38b383960cff6fef44a14d4d3996fe89261b87c5df9",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_42/clean/partitions.npz": "4360c256e96284fbfbc45d70cb57b061f460ee135914acefb7a5350d1ee540d0",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_43/backdoor/results.csv": "66688b0c2271a0a3a8ced77c10f7ce78ccefb4d214e0feae13b19c461eed535c",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_43/backdoor/config.json": "e28abfe13fedc63226df8de8cc314cfb2f98ea8d7e6b9d4e23e6130bd02e8482",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_43/backdoor/partitions.npz": "daebeb0d066369b4b5cb2393f066e4f41d973744a297d2b99b09fe3dfdf04a09",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_43/clean/results.csv": "386d38786459f116902ed42769cd368e03e8c94820fa10e619dbcc422e23cd0e",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_43/clean/config.json": "ac06585bfbdcf91a421908fa0e5af8e4eaf8b6712d3d618311482ee648999c64",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_43/clean/partitions.npz": "daebeb0d066369b4b5cb2393f066e4f41d973744a297d2b99b09fe3dfdf04a09",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/source/client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/source/run_balanced.py": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/source/config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/source/balanced_partition.py": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/source/run_backdoor.py": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_44/backdoor/results.csv": "721e2cca3429c0483061b6878ca191a28a1a7f78688c5b848f72596f20040f01",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_44/backdoor/config.json": "1134fa2fc037c29c76deaa154c6e58705ea969c85a7d7312187266659b5ef198",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_44/backdoor/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_44/clean/results.csv": "cfe0a62b1c6923370a1397bc9f9f8255d0dccc47739f18e1a0888754faa39073",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_44/clean/config.json": "aa067563b62ae5c268ade50b5f0805dd437a542eb9c3a6f2b52b7cf089b045db",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_44/clean/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/source/tests/test_backdoor.py": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_42/backdoor/results.csv": "094dc0d607050114f46758bc768c46176792f1f5a695f8ae13faaeda8ca468a6",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_42/backdoor/config.json": "82f67acea2a1730921722a7891929b7ab3998fe176fc232d3b56900d9d7c3256",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_42/backdoor/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_42/clean/results.csv": "d5f1127d577b5b8f030298be004f2d2380da661b446375d391ec9f8d18fb6e01",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_42/clean/config.json": "8fe84ef83e4ee13ac6f309f591bc89a125ceb1b8558505d4c10ea015fcee714d",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_42/clean/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_43/backdoor/results.csv": "77fedb3884f0a48814f737c6e6f125e9797dd398fe61bc0cb76b595fabf82a9b",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_43/backdoor/config.json": "4774e4d004327fda193378199d8444520559ec061042a93c74589fc04152b6a6",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_43/backdoor/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_43/clean/results.csv": "02c58f7491256a84789b6c56a203ab118e6938e6c5248e6b05fad380df705544",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_43/clean/config.json": "7634d7e65f28d3891834f2b184fc4dd9c2020fc6e45fce7ae2d1023bb1122789",
+    "results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_1/seed_43/clean/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/studies/equal_samples/alpha_0.1_scale_10/environment.json": "25c08c694839574b435f01820ae553f048be7934675ee88007087d1173b2ae07",
+    "results/studies/equal_samples/alpha_0.1_scale_10/checksums.json": "bc6615c5a2885beb80fe0e5fb9f6656e59f8ed14c82e18e86583dfbdbd4d2211",
+    "results/studies/equal_samples/alpha_0.1_scale_10/dataset_hashes.json": "894e1ee669687a844872e5ce1d6e47bbb5e976ffac74c829fac99f06d3678935",
+    "results/studies/equal_samples/alpha_0.1_scale_10/summary.json": "7301a7675a1368ff9ff4174522a71a9a51a436b7ebfc1378fedfc7e583a8dc9b",
+    "results/studies/equal_samples/alpha_0.1_scale_10/source/client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "results/studies/equal_samples/alpha_0.1_scale_10/source/run_balanced.py": "ffa38355baa105d7e611640a5ada89daceb3093ddb272e9305231f35b210aaf4",
+    "results/studies/equal_samples/alpha_0.1_scale_10/source/config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "results/studies/equal_samples/alpha_0.1_scale_10/source/balanced_partition.py": "3d07839e58573172be5f7eb6caf0161b5b8bc8a55d7e841cb1fb00318dbcdbd0",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_44/poisoned/results.csv": "d7d9018abf468cecce1be2ac88002df97d31207bb4ee95b9a1fe32ab3cfc6afe",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_44/poisoned/config.json": "a02145ef129d7f08f5c3edbcfd4d1ec01d554a78d04879e811c9d5268b62fbba",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_44/poisoned/updates.csv": "6a879fceb76ac00e3e9c8355a074d65d3e0deb0b049247b4b6dfbadd9ae34378",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_44/poisoned/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_44/clean/results.csv": "7aaf2c614ad3145342c3808cc5e27ef4c06b42ac9bbda064841588cb2adb697a",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_44/clean/config.json": "d4ff0cc47371ae762e7431dfb5f9f4ab1b8e617ea406f5b863ddcf8c27531685",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_44/clean/updates.csv": "6af1137b6a65c9775f741a2d26bc1a46a051d8aa1b3d5eab78b0f7a835bfcb9c",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_44/clean/partitions.npz": "f24067e0efcdc7ecac6be5f2d4afaf07489fe2c16d6037c62d5fb179baa80ec4",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_42/poisoned/results.csv": "9b564f9a28b1a9e5c42e20b67c22e32ace74dffb782ad4693c8abaee78f77d4a",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_42/poisoned/config.json": "70c0c6be5d1e78c78b77cf14a0bb123c8e8a6515842ca9cf4e76fb983d457c6b",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_42/poisoned/updates.csv": "0906cd53ba7cb0400e7c5dce3f9a49237d591cf572243de0d7de69ccc16cb604",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_42/poisoned/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_42/clean/results.csv": "4e391dbd60e9ab38d74f8441ea71ea0d2eb1b02ea1fa229756ebeb16ec69fb17",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_42/clean/config.json": "1c3faaf21e5205c5fe62a74d8d39a71d8f60dc942ee6f0c146a7b8ad1e433005",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_42/clean/updates.csv": "1cda58a2f60725b886338a21cbbe73ab57ff5f16dbb2b681a1de04baa11d9e2a",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_42/clean/partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_43/poisoned/results.csv": "ee2e727b5945e82dc254871a1cc67c38d2a37f53c7c7e742f2b6d80bcc7774d5",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_43/poisoned/config.json": "1b2b985df55f3873456598eef686b165da9ef4b5c95b47d4e1bf127c795ef775",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_43/poisoned/updates.csv": "b78e8b007f94365ef6a57eb5c4e4f5d80c3717cca4b5e344702f3c08708c3b3d",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_43/poisoned/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_43/clean/results.csv": "062b7d3040793ef30674a6dbd3efef25ed2c16dcf8533c9897a7998dacf30711",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_43/clean/config.json": "069ac988d30ffcdaca579f52fedef67c7bd1491887e9842113e93b75e80a5eb0",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_43/clean/updates.csv": "fc294e96674dbf1ed00e1b3ad354d3c31674ef1455b830dac338d4e1ae89caf0",
+    "results/studies/equal_samples/alpha_0.1_scale_10/seed_43/clean/partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca"
+  },
+  "findings": [
+    "No saved client vectors or round-start model checkpoints were found.",
+    "Partition NPZ arrays contain indices, not parameters.",
+    "Defense aggregation.csv logs contain scalar norms, not directions.",
+    "Hashes and deterministic seeds cannot recover vectors without training."
+  ],
+  "csv_semantics": {
+    "per_pair.csv": "Header only: no measured pairs available.",
+    "per_round_summary.csv": "Availability rows, not measurements; 3 groups per setting/seed/round. Zero expected pairs means not applicable.",
+    "summary.csv": "Availability across requested seeds/rounds; no statistical estimates.",
+    "blank_numeric_fields": "Unavailable, never zero or an inferred similarity."
+  },
+  "norm_handling": "Existing model-poisoning updates.csv includes local update_norm and submitted sent_update_norm (after scaling in attacked runs). Defense aggregation.csv includes submitted_update_l2 before clipping and separate post-clipping norms. No norm-distribution analysis was performed because the requested insufficient-vector stop condition was met; these sources cannot supply missing cosine values or substitute for different aggregation trajectories.",
+  "required_logging": [
+    "Save lossless round-start global parameters and each submitted client parameter vector after attack transformation, before server clipping/aggregation, for each seed, condition, method, round and logical identity.",
+    "Preserve tensor names, order, shapes and native dtypes; compute deltas by float64 subtraction of saved submitted and global arrays. Alternatively save lossless deltas with explicitly recorded subtraction precision.",
+    "Record logical identity to original partition mapping, sample counts, partition hashes, shuffle seeds, source/environment provenance and global/vector checksums in a new output directory.",
+    "If post-clipping arrays are saved, label them separately; zero-norm cosine must be undefined."
+  ],
+  "interpretation": "Replica similarity is an implementation expectation only. Separation from honest Non-IID updates remains unmeasured.",
+  "output_sha256": {
+    "summary.csv": "0204369b7961e83a5b41a78cc3a95cb72735d69e6c2a9f792f7c70db6a0e8201",
+    "per_round_summary.csv": "f65d1ce5343b6e9e03a9466f63e1ab3ead2bf0567b0edf4a8390257e42f597fb",
+    "per_pair.csv": "a5de173ec8807503247601612e385148b7a58ace3f30b4547bab7b855e5bf1aa"
+  }
+}

@@ -1,4 +1,6 @@
-# 下一步：實驗 C（固定每端資料量）
+# 實驗 C（已完成：固定每端資料量）
+
+目前五組 Alpha、30 次配對條件訓練已完成。請直接讀取 [full/summary.csv](../results/studies/equal_samples/full/summary.csv) 與 [full/per_seed.csv](../results/studies/equal_samples/full/per_seed.csv)，無須重跑。
 
 這裡的「繼續訓練」是繼續研究的新實驗，每次從控制好的初始模型開始，**不是接續舊模型的 checkpoint**。
 
@@ -10,7 +12,7 @@
 - 每次十輪、每輪本地訓練一遍、batch size 32、SGD learning rate 0.01。
 - 每端 FedAvg 權重固定為 20%；模型與攻擊方法沿用已修正的 client.py。
 
-## 先檢查，再由你訓練
+## 原始執行流程（已完成，供重現時參考）
 
 ```bash
 cd /home/mark/FL-project
@@ -46,7 +48,7 @@ results/studies/equal_samples/
 └── full/summary.csv          # 全部完成後的統計
 ```
 
-完成後把 `pilot/summary.csv` 或 `full/summary.csv` 傳來分析。各階段也有 `per_seed.csv`、`damage.png` 與 `REPORT.md`。不需用 A/B 的 report_matched.py 產生 C 的報告。
+`full/summary.csv` 已包含全部五組；`pilot/summary.csv` 是其中兩組的子集，不能重複計數。各階段也有 `per_seed.csv`、`damage.png` 與 `REPORT.md`。不需用 A/B 的 report_matched.py 產生 C 的報告。
 
 已完成的設定會檢查原始檔案雜湊、訓練程式、配對識別資料、每端數量與更新倍率。若資料夾存在但訓練未完成，會停止，**不覆寫**。請保留錯誤訊息；必要時用 `--output results/studies/equal_samples_retry` 建立另一批，不能把半成品當完成品。
 
@@ -63,4 +65,4 @@ results/studies/equal_samples/
 
 預檢圖顯示各端數字比例，另保存 TV（各端標籤比例與全體標籤比例的平均差異，範圍 0～1）：越高表示標籤分布越不同。這是描述資料分布的數值，不是攻擊損害。用實際分布檢查 Alpha 的效果，不把「小 Alpha 一定更不均」當成每個 seed 的保證。
 
-比較 A 與 C 可以提供線索，但演算法也改了，不能把所有結果差異都歸因於 client 權重。下一步若要更精確分離因素，需要進一步設計配對的資料分配對照。
+比較 A 與 C 可以提供線索，但演算法也改了，不能把所有結果差異都歸因於 client 權重。已完成的 [實驗 D](EXPERIMENT_D.md) 沿用同一份分配來比較權重，是較直接的合併規則對照。

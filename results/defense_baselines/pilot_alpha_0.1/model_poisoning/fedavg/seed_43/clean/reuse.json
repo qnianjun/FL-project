@@ -1,0 +1,14 @@
+{
+  "path": "/home/mark/FL-project/results/studies/equal_samples/alpha_0.1_scale_10/seed_43/clean",
+  "sha256": {
+    "config.json": "069ac988d30ffcdaca579f52fedef67c7bd1491887e9842113e93b75e80a5eb0",
+    "partitions.npz": "8f5e4cd715b8f81f0c291cfe40ca28d7233ca062ef77e0595e067b5b6d9dffca",
+    "results.csv": "062b7d3040793ef30674a6dbd3efef25ed2c16dcf8533c9897a7998dacf30711",
+    "updates.csv": "fc294e96674dbf1ed00e1b3ad354d3c31674ef1455b830dac338d4e1ae89caf0"
+  },
+  "metrics": {
+    "clean_loss": 0.38793335686922076,
+    "clean_accuracy_percent": 88.86,
+    "asr_percent": null
+  }
+}

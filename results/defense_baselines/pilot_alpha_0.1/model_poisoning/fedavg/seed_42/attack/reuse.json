@@ -1,0 +1,14 @@
+{
+  "path": "/home/mark/FL-project/results/studies/equal_samples/alpha_0.1_scale_10/seed_42/poisoned",
+  "sha256": {
+    "config.json": "70c0c6be5d1e78c78b77cf14a0bb123c8e8a6515842ca9cf4e76fb983d457c6b",
+    "partitions.npz": "55590b128706bc6674b47ad9ddfd6a17d24b5dcd20e50f879d0515f002df3813",
+    "results.csv": "9b564f9a28b1a9e5c42e20b67c22e32ace74dffb782ad4693c8abaee78f77d4a",
+    "updates.csv": "0906cd53ba7cb0400e7c5dce3f9a49237d591cf572243de0d7de69ccc16cb604"
+  },
+  "metrics": {
+    "clean_loss": 4.759283768081665,
+    "clean_accuracy_percent": 28.389999999999997,
+    "asr_percent": null
+  }
+}

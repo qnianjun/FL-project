@@ -1,0 +1,123 @@
+{
+  "reuse": {
+    "model_poisoning": {
+      "path": "/home/mark/FL-project/results/studies/equal_samples/alpha_0.1_scale_10",
+      "checksums_sha256": "bc6615c5a2885beb80fe0e5fb9f6656e59f8ed14c82e18e86583dfbdbd4d2211",
+      "source_compatibility": {
+        "client.py": {
+          "saved_sha256": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+          "current_sha256": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+          "match": "bytes"
+        },
+        "run_balanced.py": {
+          "saved_sha256": "ffa38355baa105d7e611640a5ada89daceb3093ddb272e9305231f35b210aaf4",
+          "current_sha256": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+          "match": "identical Python AST"
+        },
+        "config.json": {
+          "saved_sha256": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+          "current_sha256": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+          "match": "bytes"
+        },
+        "balanced_partition.py": {
+          "saved_sha256": "3d07839e58573172be5f7eb6caf0161b5b8bc8a55d7e841cb1fb00318dbcdbd0",
+          "current_sha256": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+          "match": "identical Python AST"
+        }
+      }
+    },
+    "backdoor": {
+      "path": "/home/mark/FL-project/results/Backdoor_test/mnist_alpha_0.1_ratio_0.2",
+      "checksums_sha256": "f105dcba3429b373e06167547c52dd0781cede309840dcb5161a6280688722ff",
+      "source_compatibility": {
+        "balanced_partition.py": {
+          "saved_sha256": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+          "current_sha256": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+          "match": "bytes"
+        },
+        "client.py": {
+          "saved_sha256": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+          "current_sha256": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+          "match": "bytes"
+        },
+        "config.json": {
+          "saved_sha256": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+          "current_sha256": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+          "match": "bytes"
+        },
+        "run_backdoor.py": {
+          "saved_sha256": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+          "current_sha256": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+          "match": "bytes"
+        },
+        "run_balanced.py": {
+          "saved_sha256": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+          "current_sha256": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+          "match": "bytes"
+        },
+        "tests/test_backdoor.py": {
+          "saved_sha256": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+          "current_sha256": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+          "match": "bytes"
+        }
+      }
+    },
+    "sybil_backdoor": {
+      "path": "/home/mark/FL-project/results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2",
+      "checksums_sha256": "f1437babd719405110c285a77f6abe88a2ffc10f89a52b945edc6408cd24c6bd",
+      "source_compatibility": {
+        "balanced_partition.py": {
+          "saved_sha256": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+          "current_sha256": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+          "match": "bytes"
+        },
+        "client.py": {
+          "saved_sha256": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+          "current_sha256": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+          "match": "bytes"
+        },
+        "config.json": {
+          "saved_sha256": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+          "current_sha256": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+          "match": "bytes"
+        },
+        "run_backdoor.py": {
+          "saved_sha256": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+          "current_sha256": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+          "match": "bytes"
+        },
+        "run_backdoor_sweep.py": {
+          "saved_sha256": "6c26eb68ce0891b8872905439e93b3613f200e9613996c279e81c364fcd1427d",
+          "current_sha256": "6c26eb68ce0891b8872905439e93b3613f200e9613996c279e81c364fcd1427d",
+          "match": "bytes"
+        },
+        "run_balanced.py": {
+          "saved_sha256": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+          "current_sha256": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+          "match": "bytes"
+        },
+        "run_sybil_backdoor.py": {
+          "saved_sha256": "3b366d0ee060d96eadf780de9c3b1927255813ae2f2a0bfec49fe1a5c3a3e3d2",
+          "current_sha256": "3b366d0ee060d96eadf780de9c3b1927255813ae2f2a0bfec49fe1a5c3a3e3d2",
+          "match": "bytes"
+        },
+        "tests/test_backdoor.py": {
+          "saved_sha256": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+          "current_sha256": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+          "match": "bytes"
+        },
+        "tests/test_backdoor_sweep.py": {
+          "saved_sha256": "235a3ad77805d219296326b8d1445547d80d7ab110d79e8015943cc5d7abf373",
+          "current_sha256": "235a3ad77805d219296326b8d1445547d80d7ab110d79e8015943cc5d7abf373",
+          "match": "bytes"
+        },
+        "tests/test_sybil_backdoor.py": {
+          "saved_sha256": "f16b02bb77c589ee56600502439390cc073706bdadf0bc6c4c2d00b6a3aa2416",
+          "current_sha256": "f16b02bb77c589ee56600502439390cc073706bdadf0bc6c4c2d00b6a3aa2416",
+          "match": "bytes"
+        }
+      }
+    }
+  },
+  "policy": "exact run compatibility; C permits identical AST"
+}

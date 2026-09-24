@@ -1,0 +1,63 @@
+{
+  "alpha": 0.1,
+  "poison_ratio": 0.2,
+  "target_label": 0,
+  "trigger_size": 3,
+  "trigger_row": 25,
+  "trigger_column": 25,
+  "trigger_value": 1.0,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "num_clients": 5,
+  "attacker": 0,
+  "rounds": 10,
+  "local_epochs": 1,
+  "batch_size": 32,
+  "learning_rate": 0.01,
+  "optimizer": "SGD",
+  "benchmark": "backdoor",
+  "method": "fedavg",
+  "defense_definition": "Flower sample-count-weighted mean of submitted parameters",
+  "seed": 44,
+  "condition": "clean",
+  "original_num_partitions": 5,
+  "logical_to_original_partition": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "sybil_count": 1,
+  "unique_attacker_sample_count": 12000,
+  "fedavg_coalition_weight": 0.2,
+  "poison_scale": 1,
+  "poisoned_local_positions": [],
+  "poison_selection_seed": 2044,
+  "asr_sample_count": 9020,
+  "initial_parameters_sha256": "4deba14911ea48403d811755bdeac51c5745615c5f09436b1ba115d074f8beec",
+  "partition_sha256": [
+    "b7f84e6fbd62afe9b8d121ca88c187a3baa8634c1e1ede9d4437cea6eb4532fc",
+    "aee5ea6a0dc5ca7bb48bf79e381e09bbc578270f91f28d4b747357d2c7727956",
+    "41d063a9afe512bfef43203a19a1553241d45fcedbc9d3efc91f260522b87e47",
+    "db08ed3a488653823ce2d29452cbb9cbf2d4671008038991a558b1da479bef2f",
+    "564437ae339ad4691dbc83d6bf4ee675ea86c7f2f23344a9bdff1912e100fd69"
+  ],
+  "shuffle_seeds": [
+    1044,
+    1045,
+    1046,
+    1047,
+    1048
+  ],
+  "client_sample_counts": [
+    12000,
+    12000,
+    12000,
+    12000,
+    12000
+  ]
+}

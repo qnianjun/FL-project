@@ -1,0 +1,17 @@
+{
+  "source_archive": "/home/mark/FL-project/results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2",
+  "source_manifest_sha256": "f1437babd719405110c285a77f6abe88a2ffc10f89a52b945edc6408cd24c6bd",
+  "source_compatibility": "exact bytes; original modules unchanged",
+  "reused_runs": 0,
+  "new_runs": 6,
+  "diagnostics": {
+    "delta": "float64(submitted parameter) - float64(current global parameter)",
+    "stage": "after local attack transformation, before FedAvg",
+    "norm": "L2 over all flattened parameter tensors",
+    "cosine": "dot(delta_i, delta_j) / (norm_i * norm_j)",
+    "zero_norm": "undefined cosine stored as an empty CSV field",
+    "pair_labels": "partition-0 replicas are Sybils in BOTH conditions",
+    "threshold": null,
+    "save_vectors": false
+  }
+}

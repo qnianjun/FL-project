@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-09-24T14:58:21.475770+00:00",
+  "base_commit": "b3ef67c0048636bd37cdde3e4eb619d23ee5b7b5",
+  "working_tree_status": " M README.md\n M docs/CODE_GUIDE.md\n M docs/EXPERIMENT_C.md\n M docs/EXPERIMENT_D.md\n M results/INDEX.md\n M results/README.md\n M results/studies/equal_samples/README.md\n?? defense_aggregation.py\n?? docs/ATTACK_RESULTS_SUMMARY.md\n?? docs/DEFENSE_PILOT.md\n?? docs/UPDATE_SIMILARITY_DIAGNOSTIC.md\n?? results/defense_baselines/\n?? results/defense_diagnostics/\n?? run_defense_pilot.py\n?? run_update_similarity.py\n?? tests/test_defense_pilot.py\n?? tests/test_update_similarity.py\n",
+  "python": "3.13.12",
+  "packages": {
+    "torch": "2.14.0",
+    "torchvision": "0.29.0",
+    "numpy": "2.5.3",
+    "flwr": "1.36.0"
+  },
+  "torch_threads": 1,
+  "deterministic_algorithms": true,
+  "source_sha256": {
+    "balanced_partition.py": "a2f3efc8dbe12497cec324a7f06a9b571ea2a2909c57cd6036f395ed2559bfd3",
+    "client.py": "eaeb89331a13a00e96d571b56ad5a0626361be9564380f19a5c644c31e5a1a0f",
+    "config.json": "306710b44319f7206630e79d9076391c3c72a1182075fb94c3f76ebd4ee902c1",
+    "run_backdoor.py": "664b2f7f8f9c8b75a66d2dfc222c2723dc38bf9ce42de692e9cd67d7c7260b73",
+    "run_backdoor_sweep.py": "6c26eb68ce0891b8872905439e93b3613f200e9613996c279e81c364fcd1427d",
+    "run_balanced.py": "1222eb2dcc91045523a1cdb20a21e16e03f7f4be111986f3e2ba19cb9e5d6503",
+    "run_sybil_backdoor.py": "3b366d0ee060d96eadf780de9c3b1927255813ae2f2a0bfec49fe1a5c3a3e3d2",
+    "run_update_similarity.py": "3ffdffe7eae83f3230529cef4669a44d07436e074dc39c149e2ab3b95551caa6",
+    "tests/test_backdoor.py": "e121e78c7f6b472450c4645fadec2e190bd6c37b8632f0fcc391c4d4a62a373d",
+    "tests/test_backdoor_sweep.py": "235a3ad77805d219296326b8d1445547d80d7ab110d79e8015943cc5d7abf373",
+    "tests/test_sybil_backdoor.py": "f16b02bb77c589ee56600502439390cc073706bdadf0bc6c4c2d00b6a3aa2416",
+    "tests/test_update_similarity.py": "d590e0ada135f3a424b33fea902fcfe9bdc366ef37d6b8eada4eaa0d38647947"
+  }
+}
