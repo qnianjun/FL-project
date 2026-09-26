@@ -1,0 +1,3 @@
+condition,n_seeds,effective_participants_mean,effective_participants_sample_sd,max_group_size_mean,max_group_size_sample_sd,effective_attacker_coalition_weight_mean,effective_attacker_coalition_weight_sample_sd,honest_identities_in_nonsingleton_groups_mean,honest_identities_in_nonsingleton_groups_sample_sd,honest_honest_pairs_grouped_mean,honest_honest_pairs_grouped_sample_sd,mixed_groups_mean,mixed_groups_sample_sd
+clean,3,7,0.0,1,0.0,0.42857142857142855,0.0,0,0.0,0,0.0,0,0.0
+attack,3,7,0.0,1,0.0,0.42857142857142855,0.0,0,0.0,0,0.0,0,0.0

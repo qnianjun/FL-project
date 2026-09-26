@@ -1,0 +1,7 @@
+seed,condition,effective_participants,max_group_size,effective_attacker_coalition_weight,honest_identities_in_nonsingleton_groups,honest_honest_pairs_grouped,mixed_groups
+42,clean,7,1,0.42857142857142855,0,0,0
+42,attack,7,1,0.42857142857142855,0,0,0
+43,clean,7,1,0.42857142857142855,0,0,0
+43,attack,7,1,0.42857142857142855,0,0,0
+44,clean,7,1,0.42857142857142855,0,0,0
+44,attack,7,1,0.42857142857142855,0,0,0

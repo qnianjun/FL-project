@@ -1,0 +1,25 @@
+{
+  "pdf_pages_including_cover": 18,
+  "a4_all_pages": true,
+  "chinese_abstract_characters_including_punctuation": 319,
+  "word_abstract_counts": {
+    "chinese": 277,
+    "english": 171
+  },
+  "no_blank_pages": true,
+  "no_research_data_urls": true,
+  "anonymous_metadata": true,
+  "raw_results_unchanged": true,
+  "raw_manifest_files_verified": 1515,
+  "grouping_rounds_verified": {
+    "identical": 60,
+    "distinct_shuffle": 60
+  },
+  "figure_count": 10,
+  "table_count": 10,
+  "output_bytes": {
+    "電腦科學與資訊工程科_聯邦學習投毒與多重身分攻擊研究.docx": 890446,
+    "電腦科學與資訊工程科_聯邦學習投毒與多重身分攻擊研究.pdf": 1144800
+  },
+  "review": "Rendered by Microsoft Word 2024; inspected updated all-page contact sheet and full-size plots. English axes with Chinese captions; every figure has a source credit."
+}

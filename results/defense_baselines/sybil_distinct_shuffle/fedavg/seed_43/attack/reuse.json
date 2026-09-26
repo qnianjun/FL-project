@@ -1,0 +1,13 @@
+{
+  "path": "/home/mark/FL-project/results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2/sybil_3/seed_43/backdoor",
+  "sha256": {
+    "config.json": "e28abfe13fedc63226df8de8cc314cfb2f98ea8d7e6b9d4e23e6130bd02e8482",
+    "partitions.npz": "daebeb0d066369b4b5cb2393f066e4f41d973744a297d2b99b09fe3dfdf04a09",
+    "results.csv": "66688b0c2271a0a3a8ced77c10f7ce78ccefb4d214e0feae13b19c461eed535c"
+  },
+  "metrics": {
+    "clean_loss": 0.49175015280246737,
+    "clean_accuracy_percent": 84.63000000000001,
+    "asr_percent": 98.72505543237251
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "inputs": [
+    {
+      "path": "/home/mark/FL-project/results/defense_baselines/pilot_alpha_0.1",
+      "checksums_sha256": "446338fef2687551df4908667c99a91a78736548b8498bae77d4fc0e286f4ceb"
+    },
+    {
+      "path": "/home/mark/FL-project/results/defense_diagnostics/sybil_update_similarity_rerun",
+      "checksums_sha256": "8884e28c9d7bad8662b86171502c599ae56e3bebc07521149462404cdf69d17f"
+    },
+    {
+      "path": "/home/mark/FL-project/results/Sybil_Backdoor_test/alpha_0.1_ratio_0.2",
+      "checksums_sha256": "f1437babd719405110c285a77f6abe88a2ffc10f89a52b945edc6408cd24c6bd"
+    }
+  ],
+  "compatibility": "exact source/environment/configs/partitions and verified raw metrics",
+  "diagnostic_evidence": {
+    "sybil_honest": {
+      "count": 720,
+      "min": -0.43418783621457213,
+      "max": 0.6298860060648008
+    },
+    "sybil_sybil": {
+      "count": 180,
+      "min": 0.9999999999999998,
+      "max": 1.0
+    },
+    "honest_honest": {
+      "count": 360,
+      "min": -0.25360168393757376,
+      "max": 0.78734350751552
+    }
+  },
+  "criterion_fixed_before_defense_training": {
+    "clipping": "unchanged validated median-norm clipping",
+    "cosine_threshold": 0.999999,
+    "directions": "submitted float64 deltas before clipping; zero is undefined",
+    "edges": "cosine >= 0.999999; zero updates have no edges",
+    "groups": "connected components; sorted members, ascending smallest ID",
+    "within_group": "unweighted arithmetic mean of clipped contributions",
+    "between_groups": "unweighted arithmetic mean; one vote per component",
+    "rounding": "native-dtype clipped parameters, float64 means, native output",
+    "scope": "equal reported sample counts; identical-replica Sybil pilot only",
+    "threshold_selection": "fixed near-identity tolerance, no outcome tuning"
+  },
+  "limitation": "exploratory identical replicas only; no universal detection claim"
+}
